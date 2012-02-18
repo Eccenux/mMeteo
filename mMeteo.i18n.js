@@ -24,12 +24,7 @@
 		<li>{i18n.get("_Yes")}</li>
 		</ol>
 		<p>Pierwszy i drugi przykład przypisuje wartość do zmiennej. Drugi do razu ją wyświetla.</p>
-		<p>Należy zwrócić uwagę, że w message "_Hi_username" musi być zawarty tekst "{$username}".</p>
-
-	@todo
-		info = "could not detect your position";
-		info = "retrieving your position timed out";
-	
+		<p>Należy zwrócić uwagę, że w message "_Hi_username" musi być zawarty tekst "{$username}".</p>	
 */
 window.mMeteo.i18n = {"":""
 	// Polski
@@ -40,10 +35,20 @@ window.mMeteo.i18n = {"":""
 		,"add - title" : "Dodaj"
 		,"edit - title" : "Edytuj"
 		,"delete - title" : "Usuń"
+		// geo errors
+		,"could not detect your position"     : "Nie udało się wykryć położenia. Włącz sieć bezprzewodową (WiFi) lub odbiornik GPS."
+		,"retrieving your position timed out" : "Nie udało się wykryć położenia w rozsądnym czasie. Spróbuj jeszcze raz."
+		// meteo forms
+		,"title-um-model" : "Prognoza krótka"
+		,"title-coamps-model" : "Prognoza długa"
+		,"label-latitude"  : "Szerokość (N)"
+		,"label-longitude" : "Długość (E)"
 		// settings
 		,"label-settings-language"         : "Język"
 		,"label-settings-language-pl"      : "polski"
-		,"label-settings-language-en"      : "angielski"
+		,"label-settings-language-en"      : "English"
+		// other
+		,"button-refresh" : "odśwież położenie"
 	}
 	// English
 	,'en' : {"":""
@@ -53,9 +58,19 @@ window.mMeteo.i18n = {"":""
 		,"add - title" : "Add"
 		,"edit - title" : "Edit"
 		,"delete - title" : "Delete"
+		// geo errors
+		,"could not detect your position"     : "Could not detect your position. Turn on your wireless network (WiFi) or GPS."
+		,"retrieving your position timed out" : "Retrieving your position timed out. You can try again."
+		// meteo forms
+		,"title-um-model" : "Short forecast"
+		,"title-coamps-model" : "Long forecast"
+		,"label-latitude"  : "Latitude (N)"
+		,"label-longitude" : "Longitude (E)"
 		// settings
 		,"label-settings-language"         : "Language"
-		,"label-settings-language-pl"      : "Polish"
+		,"label-settings-language-pl"      : "polski"
 		,"label-settings-language-en"      : "English"
+		// other
+		,"button-refresh" : "refresh position"
 	}
 };

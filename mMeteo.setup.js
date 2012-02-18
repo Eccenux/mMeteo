@@ -24,20 +24,6 @@
 	// (see below for HTML setup)
 	var lang = _self.storage.data.settings.language;
 	_self.i18n = new I18n(_self.i18n, lang);
-
-	/**
-		(re)Fill geolocation info
-	*/
-	_self.fillGeo = function ()
-	{
-		_self.geo.initGet (function(pos)
-		{
-            $('#umform-lat').val(pos.coords.latitude);
-            $('#umform-lon').val(pos.coords.longitude);
-            $('#coampsform-lat').val(pos.coords.latitude);
-            $('#coampsform-lon').val(pos.coords.longitude);
-		});
-	}
 	
 	//
 	// Onready, general setup
@@ -45,33 +31,43 @@
 	$(function()
 	{
 		//
+		// TEMP - setup fixed headers
+		//$('div[data-role="header"]').attr('data-position', 'fixed');
+		
+		//
 		// Setup geolocation
-		_self.fillGeo ();
+		//_self.fillGeo ();
 		
 		// UM_FULLDATE is from http://www.meteo.pl/meteorogram_um_js.php
-		$('#umform-date').val(UM_FULLDATE);
+		if (typeof(UM_FULLDATE) != 'undefined')
+		{
+			$('#umform-date').val(UM_FULLDATE);
+		}
 		// COAMPS_FULLDATE is from http://www.meteo.pl/meteorogram_coamps_js.php
-		$('#coampsform-date').val(COAMPS_FULLDATE);
-	});
+		if (typeof(COAMPS_FULLDATE) != 'undefined')
+		{
+			$('#coampsform-date').val(COAMPS_FULLDATE);
+		}
 
-	/**
-	//
-	// Onready, general setup
-	//
-	$(function()
-	{
 		//
-		// Setup i18nalized HTML (hide all marked with language attribute and show thoose having current language)
+		// Setup i18nalized HTML
+		// hide all marked with language attribute and show thoose having current language
 		$('*[data-lang]').hide();
 		$('*[data-lang|="'+lang+'"]').show();
-		
-		//
-		// Main page must be set-up when no hash or just hash is given
-		// (if hash is not given jQueryMobile doeasn't call pagebeforechange with url in toPage)
-		if (location.hash.length <= 1)
+		// other HTML not setup in controllers
+		$('*[data-i18n-key]').each(function()
 		{
-			_self.controller.start();
-		}
+			debugger;
+			var key = $(this).attr('data-i18n-key');
+			if ($(this).attr('type') == 'button')
+			{
+				$(this).val(_self.i18n.get(key));
+			}
+			else
+			{
+				$(this).html(_self.i18n.get(key));
+			}
+		});
 	});
 
 	//
@@ -85,9 +81,13 @@
 			$.mobile.listview.prototype.options.filterPlaceholder = "Filtruj listę...";
 		}
 		
-		// other
+		// animation on page change
 		$.mobile.defaultPageTransition = "none";		// none for performance
 		//$.mobile.fallbackTransition.slideout = "none";	// transition for non-3D animation enabled browser
+		
+		// footer fixation (not working: about -> tap on the page -> open sub-collapsed section)
+		$.mobile.touchOverflowEnabled = true;
+		$.mobile.fixedToolbars.setTouchToggleEnabled(false);
 	});
 	
 	//

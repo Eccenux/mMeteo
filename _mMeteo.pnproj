@@ -1,0 +1,49 @@
+<Project name="mMeteo">
+<MagicFolder excludeFiles="*.pnproj;*.pnps;*.bak;*.tmp;*.lnk" excludeFolders="CVS;.svn;.hg;.git" filter="*" name="lib" path="lib\">
+<MagicFolder excludeFiles="*.pnproj;*.pnps;*.bak;*.tmp;*.lnk" excludeFolders="CVS;.svn;.hg;.git" filter="*" name="base" path="base\">
+<MagicFolder excludeFiles="*.pnproj;*.pnps;*.bak;*.tmp;*.lnk" excludeFolders="CVS;.svn;.hg;.git" filter="*" name="images" path="images\">
+<File path="ajax-loader.png"></File>
+<File path="icons-18-black.png"></File>
+<File path="icons-18-white.png"></File>
+<File path="icons-36-black.png"></File>
+<File path="icons-36-white.png"></File></MagicFolder>
+<File path="jquery-min.js"></File>
+<File path="jquery.mobile-min.css"></File>
+<File path="jquery.mobile-min.js"></File></MagicFolder>
+<File path="barcode.js"></File>
+<File path="form_cr.js"></File>
+<File path="I18n.js"></File>
+<File path="jquery.mobile.multifooter.js"></File>
+<File path="jquery.qrcode.js"></File>
+<File path="jquery.store.js"></File>
+<File path="json2.js"></File>
+<File path="shake.js"></File></MagicFolder>
+<MagicFolder excludeFiles="*.pnproj;*.pnps;*.bak;*.tmp;*.lnk" excludeFolders="CVS;.svn;.hg;.git" filter="*" name="logo" path="logo\">
+<MagicFolder excludeFiles="*.pnproj;*.pnps;*.bak;*.tmp;*.lnk" excludeFolders="CVS;.svn;.hg;.git" filter="*" name="ico" path="ico\">
+<File path="logo016.png"></File>
+<File path="logo032.png"></File>
+<File path="logo048.png"></File>
+<File path="logo064.png"></File></MagicFolder>
+<File path="icm_logo.png"></File>
+<File path="logo.ico"></File>
+<File path="Logo.svg"></File>
+<File path="logo036.png"></File>
+<File path="logo048.png"></File>
+<File path="logo057.png"></File>
+<File path="logo072.png"></File>
+<File path="logo080.png"></File>
+<File path="logo114.png"></File>
+<File path="logo128.png"></File>
+<File path="_icofiles.bat"></File>
+<File path="_logofiles.bat"></File>
+<File path="_svg2png.bat"></File></MagicFolder>
+<Folder name="root">
+<File path="_changes.log"></File>
+<File path="cache.manifest"></File>
+<File path="index.html"></File>
+<File path="mMeteo.base.js"></File>
+<File path="mMeteo.i18n.js"></File>
+<File path="mMeteo.model.js"></File>
+<File path="mMeteo.css"></File>
+<File path="mMeteo.controller.js"></File>
+<File path="mMeteo.setup.js"></File></Folder></Project>

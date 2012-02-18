@@ -57,7 +57,7 @@
 		//! @todo i18n would probably be a good idea
 		if (info.length)
 		{
-			alert(info);
+			alert(_self.i18n.get(info));
 		}
 	}
 

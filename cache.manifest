@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# application version 0.0.3
+# application version 0.1.1
 CACHE:
 index.html
 
@@ -19,6 +19,7 @@ lib/jquery.store.js
 lib/json2.js
 lib/form_cr.js
 lib/I18n.js
+lib/jquery.mobile.multifooter.js
 
 NETWORK:
 http://www.meteo.pl/

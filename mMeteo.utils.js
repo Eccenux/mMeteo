@@ -15,6 +15,20 @@
 (function($, _self)
 {
 	/**
+		(re)Fill geolocation info
+	*/
+	_self.fillGeo = function ()
+	{
+		_self.geo.initGet (function(pos)
+		{
+            $('#umform-lat').val(pos.coords.latitude);
+            $('#umform-lon').val(pos.coords.longitude);
+            $('#coampsform-lat').val(pos.coords.latitude);
+            $('#coampsform-lon').val(pos.coords.longitude);
+		});
+	}
+	
+	/**
 		Get by ID helper function
 		
 		@param id Id of an item to get
@@ -90,9 +104,25 @@
 	*/
 	_self.deepClone = function(source)
 	{
-		return $.extend(true, {}, source);;
+		return $.extend(true, {}, source);
 	}
 
+	/**
+		Clone an array
+		
+		@param source Object to be cloned
+		@return Cloned object (related only by value)
+	*/
+	_self.arrayClone = function(source)
+	{
+		var destination = [];
+		for (var i = 0; i < source.length; i++)
+		{
+			destination[i] = source[i];
+		}
+		return destination;
+	}
+	
 	/**
 		Copy properties of one object to another
 		

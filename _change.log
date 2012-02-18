@@ -1,0 +1,29 @@
+== planned ==
+# Integrate meteo forms (single page with a target switch).
+# Advanced settings:
+#* type of animation in transitions between pages
+#* type of footer/buttons: fixed to bottom*, below content, below header; *default, but don't work too good on all phones (browsers)
+# Other settings:
+#* get position: automatic*, only manual, save previous; *default, postion is aquired when the application is loaded.
+#* skin
+# Add some feedback when position is being aquired.
+# Saving favorite positions (would allow to get position without Wifi or GPS)?
+# Favorite position loaded at startup?
+# More FAQ (about original meteo.pl service, using wind (compass rose) - moving around the map).
+# PhoneGap app?
+
+== 0.1.1 ==
+# i18n of current things.
+# Info. about forecast scope (scope of models).
+# jQuery mobile - model per page.
+# About & FAQ.
+# Global footer.
+# Set up buttons in footer.
+# Basic settings - language.
+# Some extra i18n tools (data-i18n-key).
+# More compact version of meteo forms.
+
+== 0.0.3 ==
+Some basics:
+# two forms on one page,
+# reading position

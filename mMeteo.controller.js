@@ -68,9 +68,7 @@
 		
 		//
 		// save action
-		$('#settings-submit-btn')
-		.unbind()
-		.click(function()
+		var saveAction = function()
 		{
 			/*
 			// simple validation
@@ -88,6 +86,12 @@
 			// refresh to main
 			location.href = 'index.html';
 			return false;
-		});
+		}
+		// bind
+		$('#settings-submit-btn')
+		.unbind()
+		.click(saveAction);
+		// TODO submit (ENTER)
+		$('#settings-form').trigger( "create" );
 	}
 })(jQuery, window.mMeteo);

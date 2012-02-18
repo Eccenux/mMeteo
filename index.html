@@ -22,10 +22,11 @@
 	<link rel="apple-touch-icon" href="logo/logo128.png">
 
 	<!-- jQuery libs -->
-	<!--<link rel="stylesheet" href="lib/base/jquery.mobile-min.css">-->
+	<link rel="stylesheet" href="lib/base/jquery.mobile-min.css">
 	<script type="text/javascript" src="lib/json2.js"></script>
 	<script type="text/javascript" src="lib/base/jquery-min.js"></script>
 	<script type="text/javascript" src="lib/jquery.store.js"></script>
+	<script type="text/javascript" src="lib/jquery.mobile.multifooter.js"></script>
 	
 	<!-- other libs -->
 	<script type="text/javascript" src="lib/form_cr.js"></script>
@@ -46,34 +47,229 @@
 	<script type="text/javascript" src="http://www.meteo.pl/meteorogram_coamps_js.php"></script>
 
 	<!-- jQuery mobile (must be here for mobile...options to work) -->
-	<!--<script type="text/javascript" src="lib/base/jquery.mobile-min.js"></script>-->
+	<script type="text/javascript" src="lib/base/jquery.mobile-min.js"></script>
 </head>
 <body lang="pl">
 
-	<h2>Model UM</h2>
-    <form action="http://www.meteo.pl/um/php/mgram_search.php" action="GET" target="mMeteoFrame" id="umform">
-		<p><label for="umform-lat">N</label> <input type="text" id="umform-lat" name="NALL"></p>
-		<p><label for="umform-lon">E</label> <input type="text" id="umform-lon" name="EALL"></p>
-		<input type="hidden" name="lang" value="pl" />
-		<input type="hidden" name="fdate" id="umform-date" value="" />
-		<p><input type="submit" value="Meteo.pl" name="submit" /> <input type="button" id="refresh" value="odśwież" onclick="mMeteo.fillGeo ()"></p>
-	</form>
-	<!--
-	window.open("/um/php/mgram_search.php?NALL="+N_all+"&EALL="+E_all+"&lang="+lang+"&fdate="+UM_FULLDATE,"info","width=840,height=770,scrollbars=yes,resizable=yes,toolbar=no,menubar=no,left=100,top=10")
-	-->
+<!--
+	UM model page
+-->	
+<div data-role="page" id="page-um">
 
-	<h2>Model COAMPS</h2>
-    <form action="http://www.meteo.pl/php/mgram_search.php" action="GET" target="mMeteoFrame" id="coampsform">
-		<p><label for="coampsform-lat">N</label> <input type="text" id="coampsform-lat" name="NALL"></p>
-		<p><label for="coampsform-lon">E</label> <input type="text" id="coampsform-lon" name="EALL"></p>
-		<input type="hidden" name="lang" value="pl" />
-		<input type="hidden" name="fdate" id="coampsform-date" value="" />
-		<p><input type="submit" value="Meteo.pl" name="submit" /> <input type="button" id="refresh" value="odśwież" onclick="mMeteo.fillGeo ()"></p>
-	</form>
-	<!--
-	window.open("/um/php/mgram_search.php?NALL="+N_all+"&EALL="+E_all+"&lang="+lang+"&fdate="+UM_FULLDATE,"info","width=840,height=770,scrollbars=yes,resizable=yes,toolbar=no,menubar=no,left=100,top=10")
-	window.open(   "/php/mgram_search.php?NALL="+N_all+"&EALL="+E_all+"&lang="+lang+"&fdate="+COAMPS_FULLDATE,"info","width=970,height=750,scrollbars=yes,resizable=yes,toolbar=no,menubar=no,left=100,top=10")
-	-->
+	<div data-role="header">
+		<h1 data-i18n-key="title-um-model">Model UM</h1>
+		<a href="#page-coamps" data-role="button" data-icon="arrow-r" class="ui-btn-right" data-i18n-key="title-coamps-model">Model COAMPS</a>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<div class="description">
+			<div data-lang="pl">Prognoza na najbliższe 2 doby.</div>
+			<div data-lang="en">Next 2 days forecast.</div>
+		</div>
+		<form action="http://www.meteo.pl/um/php/mgram_search.php" action="GET" target="mMeteoFrame" id="umform">
+			<fieldset data-role="fieldcontain" data-mini="true">
+				<p><label for="umform-lat" data-i18n-key="label-latitude" >N</label> <input type="text" id="umform-lat" name="NALL"></p>
+				<p><label for="umform-lon" data-i18n-key="label-longitude">E</label> <input type="text" id="umform-lon" name="EALL"></p>
+			</fieldset>
+			<!--
+			<div class="buttons ui-grid-a">
+				<div class="ui-block-a">
+					<label for="umform-lat">N</label> <input type="text" id="umform-lat" name="NALL">
+				</div>
+				<div class="ui-block-b">
+					<label for="umform-lon">E</label> <input type="text" id="umform-lon" name="EALL">
+				</div>
+			</div>
+			-->
+			<input type="hidden" name="lang" value="pl" />
+			<input type="hidden" name="fdate" id="umform-date" value="" />
+			<div class="buttons ui-grid-a">
+				<div class="ui-block-a">
+					<input type="submit" value="Meteo.pl" name="submit">
+				</div>
+				<div class="ui-block-b">
+					<input type="button" data-i18n-key="button-refresh" value="odśwież położenie" onclick="mMeteo.fillGeo ()">
+				</div>
+			</div>
+		</form>
+	</div><!-- /content -->
+
+</div><!-- /page -->
+
+<!--
+	COAMPS Model page
+-->	
+<div data-role="page" id="page-coamps">
+	<div data-role="header">
+		<h1 data-i18n-key="title-coamps-model">Model COAMPS</h1>
+		<a href="#page-um" data-role="button" data-icon="arrow-r" class="ui-btn-right" data-i18n-key="title-um-model">Model UM</a>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<div class="description">
+			<div data-lang="pl">Prognoza na najbliższe 4 doby, ale może być mniej dokładna niż w wersji krótkoterminowej.</div>
+			<div data-lang="en">Next 4 days forecast which can be less accurate then in short-term forecast.</div>
+		</div>
+		<form action="http://www.meteo.pl/php/mgram_search.php" action="GET" target="mMeteoFrame" id="coampsform">
+			<fieldset data-role="fieldcontain" data-mini="true">
+				<p><label for="coampsform-lat" data-i18n-key="label-latitude" >N</label> <input type="text" id="coampsform-lat" name="NALL"></p>
+				<p><label for="coampsform-lon" data-i18n-key="label-longitude">E</label> <input type="text" id="coampsform-lon" name="EALL"></p>
+			</fieldset>
+			<input type="hidden" name="lang" value="pl">
+			<input type="hidden" name="fdate" id="coampsform-date" value="">
+			<div class="buttons ui-grid-a">
+				<div class="ui-block-a">
+					<input type="submit" value="Meteo.pl" name="submit">
+				</div>
+				<div class="ui-block-b">
+					<input type="button" data-i18n-key="button-refresh" value="odśwież położenie" onclick="mMeteo.fillGeo ()">
+				</div>
+			</div>
+		</form>
+	</div><!-- /content -->
 	
+</div><!-- /page -->
+
+<!--
+	About page
+-->	
+<div data-role="page" id="page-about">
+
+	<div data-role="header">
+		<h1>
+			<span data-lang="en">About</span>
+			<span data-lang="pl">O programie</span>
+		</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+	
+		<div data-role="collapsible-set" data-theme="c" data-content-theme="d">
+			<div data-role="collapsible" data-collapsed="true">
+				<h2>
+					<span data-lang="pl">Warunki użytkownia</span>
+					<span data-lang="en">Terms of usage</span>
+				</h2>
+				<div data-lang="pl">
+					<p>Copyright &copy; 2012 Maciej "Nux" Jaros.</p>
+					<p>Licencja <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">CC-BY-SA</a></p>
+					<p>Informacje na temat autorów i licencji dla poszczególnych bibliotek znajdują się w odpowiednich plikach JS oraz CSS.</p>
+					<p>Prognozy są generowane przez serwis <a href="www.meteo.pl" target="_blank">www.meteo.pl</a>, który został stworzony przez ICM.</p>
+				</div>
+				<div data-lang="en">
+					<p>Copyright &copy; 2012 Maciej "Nux" Jaros.</p>
+					<p>License <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">CC-BY-SA</a></p>
+					<p>Libraries copyright and license information is avaiable in the JS and CSS files.</p>
+					<p>Prognosis are generate by <a href="www.meteo.pl" target="_blank">www.meteo.pl</a>, which was made by ICM.</p>
+				</div>
+			</div>
+			<div data-role="collapsible" data-collapsed="false">
+				<h2>
+					<span data-lang="pl">Pytania i odpowiedzi</span>
+					<span data-lang="en">FAQ</span>
+				</h2>
+				<div data-role="collapsible-set" data-theme="d" data-content-theme="d">
+					<div data-role="collapsible">
+						<h3>
+							<span data-lang="pl">Dlaczego nie działa zapis?</span>
+							<span data-lang="en">Why doesn't my data get saved?</span>
+						</h3>
+						<div data-lang="pl">
+							<p>Jeśli nie działa zapis, to najprawdopodobniej Twoja komórka ma wyłączony lub nie obsługuje skryptów JavaScript. Program wymaga JavaScript do poprawnego działania.</p>
+						</div>
+						<div data-lang="en">
+							<p>If saving doesn't work then your cellphone doesn't have JavaScript enabled. This application needs JavaScript to work properly.</p>
+						</div>
+					</div>
+					<div data-role="collapsible">
+						<h3>
+							<span data-lang="pl">Jak działa wykrywanie położenia?</span>
+							<span data-lang="en">How does position refresh works?</span>
+						</h3>
+						<div data-lang="pl">
+							<p>Odp.</p>
+						</div>
+						<div data-lang="en">
+							<p>Ans.</p>
+						</div>
+					</div>
+					<!--
+					<div data-role="collapsible">
+						<h3>
+							<span data-lang="pl">Pytanie?</span>
+							<span data-lang="en">Question?</span>
+						</h3>
+						<div data-lang="pl">
+							<p>Odp.</p>
+						</div>
+						<div data-lang="en">
+							<p>Ans.</p>
+						</div>
+					</div>
+					-->
+				</div>
+			</div>
+		</div>
+
+	</div><!-- /content -->
+	
+</div><!-- /page -->
+
+<!--
+	Settings page
+-->	
+<div data-role="page" id="page-settings">
+
+	<div data-role="header">
+		<a href="index.html" data-icon="delete" data-rel="back">
+			<span data-lang="en">Cancel</span>
+			<span data-lang="pl">Anuluj</span>
+		</a>
+		<h1>
+			<span data-lang="en">Settings</span>
+			<span data-lang="pl">Ustawienia</span>
+		</h1>
+		<a href="index.html" data-icon="check" data-theme="b" id="settings-submit-btn">
+			<span data-lang="en">Save</span>
+			<span data-lang="pl">Zapisz</span>
+		</a>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		
+		<form action="index.html" method="GET" data-ajax="false" id="settings-form">
+			<!--
+				@see mMeteo.controller.settings
+			-->
+		</form>
+	</div><!-- /content -->
+	
+</div><!-- /page -->
+
+<!--
+	Extra footer attributes:
+		data-footer-pages-exclude	Space separated list of page ids on which this footer should not to be copied to.
+		data-footer-pages-include	Space separated list of page ids on which this footer is to be copied to. If not used or empty then all pages will have this footer.
+		data-id (needed for JQM) is added automatically
+-->
+<div data-role="multipagefooter" data-position="fixed">
+	<div data-role="navbar">
+		<ul>
+			<li><a href="index.html" data-icon="back" data-rel="back">
+				<span data-lang="en">Back</span>
+				<span data-lang="pl">Powrót</span>
+			</a></li>
+			<li><a href="#page-settings" data-icon="gear">
+				<span data-lang="pl">Ustawienia</span>
+				<span data-lang="en">Settings</span>
+			</a></li>
+			<li><a href="#page-about" data-icon="info">
+				<span data-lang="en">About</span>
+				<span data-lang="pl">O programie</span>
+			</a></li>
+		</ul>
+	</div>
+</div><!-- /footer -->
+
 </body>
 </html>
