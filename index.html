@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>mMeteo</title>
+    <meta charset="UTF-8">
+    
+	<meta name="author" content="Maciej Jaros">
+	<meta name="copyright" content="Maciej Jaros">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+	<meta charset="UTF-8">
+
+	<meta name="author" content="Maciej Jaros">
+	<meta name="copyright" content="Maciej Jaros++ (See source)">
+	
+	<!-- app icons -->
+	<link rel="shortcut icon" href="./logo/logo.ico">
+	<link rel="apple-touch-icon" href="logo/logo072.png" sizes="72x72">
+	<link rel="apple-touch-icon" href="logo/logo080.png" sizes="80x80">
+	<link rel="apple-touch-icon" href="logo/logo114.png" sizes="114x114">
+	<link rel="apple-touch-icon" href="logo/logo128.png">
+
+	<!-- jQuery libs -->
+	<!--<link rel="stylesheet" href="lib/base/jquery.mobile-min.css">-->
+	<script type="text/javascript" src="lib/json2.js"></script>
+	<script type="text/javascript" src="lib/base/jquery-min.js"></script>
+	<script type="text/javascript" src="lib/jquery.store.js"></script>
+	
+	<!-- other libs -->
+	<script type="text/javascript" src="lib/form_cr.js"></script>
+	<script type="text/javascript" src="lib/I18n.js"></script>
+
+	<!-- this gadget -->
+	<link rel="stylesheet" href="./mMeteo.css">
+	<script type="text/javascript" src="./mMeteo.base.js"></script>
+	<script type="text/javascript" src="./mMeteo.utils.js"></script>
+	<script type="text/javascript" src="./mMeteo.i18n.js"></script>
+	<script type="text/javascript" src="./mMeteo.model.js"></script>
+	<script type="text/javascript" src="./mMeteo.geo.js"></script>
+	<script type="text/javascript" src="./mMeteo.controller.js"></script>
+	<script type="text/javascript" src="./mMeteo.setup.js"></script>
+	
+	<!-- meteo.pl -->
+	<script type="text/javascript" src="http://www.meteo.pl/meteorogram_um_js.php"></script>
+	<script type="text/javascript" src="http://www.meteo.pl/meteorogram_coamps_js.php"></script>
+
+	<!-- jQuery mobile (must be here for mobile...options to work) -->
+	<!--<script type="text/javascript" src="lib/base/jquery.mobile-min.js"></script>-->
+</head>
+<body lang="pl">
+
+	<h2>Model UM</h2>
+    <form action="http://www.meteo.pl/um/php/mgram_search.php" action="GET" target="mMeteoFrame" id="umform">
+		<p><label for="umform-lat">N</label> <input type="text" id="umform-lat" name="NALL"></p>
+		<p><label for="umform-lon">E</label> <input type="text" id="umform-lon" name="EALL"></p>
+		<input type="hidden" name="lang" value="pl" />
+		<input type="hidden" name="fdate" id="umform-date" value="" />
+		<p><input type="submit" value="Meteo.pl" name="submit" /> <input type="button" id="refresh" value="odśwież" onclick="mMeteo.fillGeo ()"></p>
+	</form>
+	<!--
+	window.open("/um/php/mgram_search.php?NALL="+N_all+"&EALL="+E_all+"&lang="+lang+"&fdate="+UM_FULLDATE,"info","width=840,height=770,scrollbars=yes,resizable=yes,toolbar=no,menubar=no,left=100,top=10")
+	-->
+
+	<h2>Model COAMPS</h2>
+    <form action="http://www.meteo.pl/php/mgram_search.php" action="GET" target="mMeteoFrame" id="coampsform">
+		<p><label for="coampsform-lat">N</label> <input type="text" id="coampsform-lat" name="NALL"></p>
+		<p><label for="coampsform-lon">E</label> <input type="text" id="coampsform-lon" name="EALL"></p>
+		<input type="hidden" name="lang" value="pl" />
+		<input type="hidden" name="fdate" id="coampsform-date" value="" />
+		<p><input type="submit" value="Meteo.pl" name="submit" /> <input type="button" id="refresh" value="odśwież" onclick="mMeteo.fillGeo ()"></p>
+	</form>
+	<!--
+	window.open("/um/php/mgram_search.php?NALL="+N_all+"&EALL="+E_all+"&lang="+lang+"&fdate="+UM_FULLDATE,"info","width=840,height=770,scrollbars=yes,resizable=yes,toolbar=no,menubar=no,left=100,top=10")
+	window.open(   "/php/mgram_search.php?NALL="+N_all+"&EALL="+E_all+"&lang="+lang+"&fdate="+COAMPS_FULLDATE,"info","width=970,height=750,scrollbars=yes,resizable=yes,toolbar=no,menubar=no,left=100,top=10")
+	-->
+	
+</body>
+</html>

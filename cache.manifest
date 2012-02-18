@@ -1,0 +1,24 @@
+CACHE MANIFEST
+# application version 0.0.3
+CACHE:
+index.html
+
+mMeteo.css
+logo/logo.ico
+
+mMeteo.base.js
+mMeteo.controller.js
+mMeteo.geo.js
+mMeteo.i18n.js
+mMeteo.model.js
+mMeteo.setup.js
+mMeteo.utils.js
+
+lib/base/jquery-min.js
+lib/jquery.store.js
+lib/json2.js
+lib/form_cr.js
+lib/I18n.js
+
+NETWORK:
+http://www.meteo.pl/
