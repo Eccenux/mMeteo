@@ -1,16 +1,23 @@
 == planned ==
-# Integrate meteo forms (single page with a target switch).
 # Advanced settings:
 #* type of animation in transitions between pages
 #* type of footer/buttons: fixed to bottom*, below content, below header; *default, but don't work too good on all phones (browsers)
 # Other settings:
-#* get position: automatic*, only manual, save previous; *default, postion is aquired when the application is loaded.
+#* get position: automatic*, only manual, save previous; *default, position is acquired when the application is loaded.
 #* skin
-# Add some feedback when position is being aquired.
-# Saving favorite positions (would allow to get position without Wifi or GPS)?
+# Add some feedback when position is being acquired.
+# Saving favorite positions (would allow to get position without WiFi or GPS)?
 # Favorite position loaded at startup?
-# More FAQ (about original meteo.pl service, using wind (compass rose) - moving around the map).
 # PhoneGap app?
+
+== 0.2.0 ==
+# Integrate meteo forms (single page with a target switch).
+# Back button in footer changed to home/forecast.
+# If lat, lon is empty then get position automatically or show an error message.
+# More FAQ
+#* about models,
+#* using wind (compass rose) - moving around the map,
+#* position acquiring info.
 
 == 0.1.1 ==
 # i18n of current things.

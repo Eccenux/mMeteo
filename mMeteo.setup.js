@@ -36,18 +36,61 @@
 		
 		//
 		// Setup geolocation
-		//_self.fillGeo ();
+		_self.fillGeo ();
 		
-		// UM_FULLDATE is from http://www.meteo.pl/meteorogram_um_js.php
-		if (typeof(UM_FULLDATE) != 'undefined')
+		//
+		// Setup submit action
+		$('#forecastform').submit(function()
 		{
-			$('#umform-date').val(UM_FULLDATE);
-		}
-		// COAMPS_FULLDATE is from http://www.meteo.pl/meteorogram_coamps_js.php
-		if (typeof(COAMPS_FULLDATE) != 'undefined')
-		{
-			$('#coampsform-date').val(COAMPS_FULLDATE);
-		}
+			// auto-fix values
+			var ll = { lat: $('#forecastform-lat').val(), lon: $('#forecastform-lon').val() };
+			ll.lat = ll.lat.replace(/,/, '.')
+			ll.lon = ll.lon.replace(/,/, '.')
+			$('#forecastform-lat').val(ll.lat);
+			$('#forecastform-lon').val(ll.lon);
+
+			// validate values
+			var info = "";
+			if (ll.lat == '' || ll.lon == '')
+			{
+				info = "error: position empty";
+			}
+			else if (ll.lat.search(/^[0-9.]+$/) < 0 || ll.lon.search(/^[0-9.]+$/) < 0)
+			{
+				info = "error: position must be decimal";
+			}
+			
+			// show error
+			if (info.length)
+			{
+				alert(_self.i18n.get(info));
+				return false;
+			}
+			
+			// switch between two forms
+			var modelChoosen = $('#forecastform').attr('data-model');	// this was set onclick
+			if (modelChoosen == 'um')
+			{
+				if (typeof(UM_FULLDATE) != 'undefined')		// UM_FULLDATE is from http://www.meteo.pl/meteorogram_um_js.php
+				{
+					$('#forecastform-date').val(UM_FULLDATE);
+				}
+			}
+			else
+			{
+				if (typeof(COAMPS_FULLDATE) != 'undefined')	// COAMPS_FULLDATE is from http://www.meteo.pl/meteorogram_coamps_js.php
+				{
+					$('#forecastform-date').val(COAMPS_FULLDATE);
+				}
+			}
+			// setup action
+			var actionUrl = $('#forecastform').attr('data-action-'+modelChoosen);
+			if (actionUrl)
+			{
+				$('#forecastform').attr('action', actionUrl);
+			}
+			return true;
+		});
 
 		//
 		// Setup i18nalized HTML
@@ -57,7 +100,6 @@
 		// other HTML not setup in controllers
 		$('*[data-i18n-key]').each(function()
 		{
-			debugger;
 			var key = $(this).attr('data-i18n-key');
 			if ($(this).attr('type') == 'button')
 			{

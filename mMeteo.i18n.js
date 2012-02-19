@@ -38,9 +38,13 @@ window.mMeteo.i18n = {"":""
 		// geo errors
 		,"could not detect your position"     : "Nie udało się wykryć położenia. Włącz sieć bezprzewodową (WiFi) lub odbiornik GPS."
 		,"retrieving your position timed out" : "Nie udało się wykryć położenia w rozsądnym czasie. Spróbuj jeszcze raz."
+		// other errors
+		,"error: position empty"           : "Błąd! Współrzędne położenia są puste.\n\nOdśwież położenie lub wpisz długość i szerokość ręcznie."
+		,"error: position must be decimal" : "Błąd! Współrzędne położenia są nieprawidłowe. Długość i szerokość muszą być wpisane w formie liczb dziesiętnych.\n\nPopraw lub spróbuj odświeżyć położenie."
 		// meteo forms
-		,"title-um-model" : "Prognoza krótka"
-		,"title-coamps-model" : "Prognoza długa"
+		,"title-forecast" : "Prognoza"
+		,"title-um-model" : "Krótka prognoza"
+		,"title-coamps-model" : "Długa prognoza"
 		,"label-latitude"  : "Szerokość (N)"
 		,"label-longitude" : "Długość (E)"
 		// settings
@@ -48,7 +52,7 @@ window.mMeteo.i18n = {"":""
 		,"label-settings-language-pl"      : "polski"
 		,"label-settings-language-en"      : "English"
 		// other
-		,"button-refresh" : "odśwież położenie"
+		,"button-refresh" : "Odśwież położenie"
 	}
 	// English
 	,'en' : {"":""
@@ -61,7 +65,11 @@ window.mMeteo.i18n = {"":""
 		// geo errors
 		,"could not detect your position"     : "Could not detect your position. Turn on your wireless network (WiFi) or GPS."
 		,"retrieving your position timed out" : "Retrieving your position timed out. You can try again."
+		// other errors
+		,"error: position empty"           : "Error! Geo. position is empty.\n\nPlease refresh position or type in latitude and longitude yourself."
+		,"error: position must be decimal" : "Error! Geo. position is incorrect. Latitude and longitude must be decimal.\n\nCorrect thoose values or try to refresh the position."
 		// meteo forms
+		,"title-forecast" : "Forecast"
 		,"title-um-model" : "Short forecast"
 		,"title-coamps-model" : "Long forecast"
 		,"label-latitude"  : "Latitude (N)"
@@ -71,6 +79,6 @@ window.mMeteo.i18n = {"":""
 		,"label-settings-language-pl"      : "polski"
 		,"label-settings-language-en"      : "English"
 		// other
-		,"button-refresh" : "refresh position"
+		,"button-refresh" : "Refresh position"
 	}
 };

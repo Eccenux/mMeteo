@@ -21,10 +21,8 @@
 	{
 		_self.geo.initGet (function(pos)
 		{
-            $('#umform-lat').val(pos.coords.latitude);
-            $('#umform-lon').val(pos.coords.longitude);
-            $('#coampsform-lat').val(pos.coords.latitude);
-            $('#coampsform-lon').val(pos.coords.longitude);
+            $('#forecastform-lat').val(pos.coords.latitude);
+            $('#forecastform-lon').val(pos.coords.longitude);
 		});
 	}
 	

@@ -52,82 +52,40 @@
 <body lang="pl">
 
 <!--
-	UM model page
+	Model page = start page
 -->	
-<div data-role="page" id="page-um">
+<div data-role="page" id="page-start">
 
 	<div data-role="header">
-		<h1 data-i18n-key="title-um-model">Model UM</h1>
-		<a href="#page-coamps" data-role="button" data-icon="arrow-r" class="ui-btn-right" data-i18n-key="title-coamps-model">Model COAMPS</a>
+		<h1 data-i18n-key="title-forecast">Prognoza</h1>
 	</div><!-- /header -->
 
 	<div data-role="content">
-		<div class="description">
-			<div data-lang="pl">Prognoza na najbliższe 2 doby.</div>
-			<div data-lang="en">Next 2 days forecast.</div>
-		</div>
-		<form action="http://www.meteo.pl/um/php/mgram_search.php" action="GET" target="mMeteoFrame" id="umform">
+		<form
+			method="GET" target="mMeteoFrame" id="forecastform"
+			action="http://www.meteo.pl/um/php/mgram_search.php" 
+			data-action-um="http://www.meteo.pl/um/php/mgram_search.php" 
+			data-action-coamps="http://www.meteo.pl/php/mgram_search.php" 
+			data-model="um" 
+		>
 			<fieldset data-role="fieldcontain" data-mini="true">
-				<p><label for="umform-lat" data-i18n-key="label-latitude" >N</label> <input type="text" id="umform-lat" name="NALL"></p>
-				<p><label for="umform-lon" data-i18n-key="label-longitude">E</label> <input type="text" id="umform-lon" name="EALL"></p>
+				<p><label for="forecastform-lat" data-i18n-key="label-latitude" >N</label> <input type="text" id="forecastform-lat" name="NALL"></p>
+				<p><label for="forecastform-lon" data-i18n-key="label-longitude">E</label> <input type="text" id="forecastform-lon" name="EALL"></p>
 			</fieldset>
-			<!--
-			<div class="buttons ui-grid-a">
-				<div class="ui-block-a">
-					<label for="umform-lat">N</label> <input type="text" id="umform-lat" name="NALL">
-				</div>
-				<div class="ui-block-b">
-					<label for="umform-lon">E</label> <input type="text" id="umform-lon" name="EALL">
-				</div>
-			</div>
-			-->
 			<input type="hidden" name="lang" value="pl" />
-			<input type="hidden" name="fdate" id="umform-date" value="" />
+			<input type="hidden" name="fdate" id="forecastform-date" value="" />
 			<div class="buttons ui-grid-a">
 				<div class="ui-block-a">
-					<input type="submit" value="Meteo.pl" name="submit">
+					<input type="submit" data-i18n-key="title-um-model" value="Model UM" id="submitUM" onclick="$('#forecastform').attr('data-model','um')">
 				</div>
 				<div class="ui-block-b">
-					<input type="button" data-i18n-key="button-refresh" value="odśwież położenie" onclick="mMeteo.fillGeo ()">
+					<input type="submit" data-i18n-key="title-coamps-model" value="Model COAMPS" id="submitCOAMPS" onclick="$('#forecastform').attr('data-model','coamps')">
 				</div>
 			</div>
+			<input type="button" data-i18n-key="button-refresh" data-icon="refresh" value="Odśwież położenie" onclick="mMeteo.fillGeo ()">
 		</form>
 	</div><!-- /content -->
 
-</div><!-- /page -->
-
-<!--
-	COAMPS Model page
--->	
-<div data-role="page" id="page-coamps">
-	<div data-role="header">
-		<h1 data-i18n-key="title-coamps-model">Model COAMPS</h1>
-		<a href="#page-um" data-role="button" data-icon="arrow-r" class="ui-btn-right" data-i18n-key="title-um-model">Model UM</a>
-	</div><!-- /header -->
-
-	<div data-role="content">
-		<div class="description">
-			<div data-lang="pl">Prognoza na najbliższe 4 doby, ale może być mniej dokładna niż w wersji krótkoterminowej.</div>
-			<div data-lang="en">Next 4 days forecast which can be less accurate then in short-term forecast.</div>
-		</div>
-		<form action="http://www.meteo.pl/php/mgram_search.php" action="GET" target="mMeteoFrame" id="coampsform">
-			<fieldset data-role="fieldcontain" data-mini="true">
-				<p><label for="coampsform-lat" data-i18n-key="label-latitude" >N</label> <input type="text" id="coampsform-lat" name="NALL"></p>
-				<p><label for="coampsform-lon" data-i18n-key="label-longitude">E</label> <input type="text" id="coampsform-lon" name="EALL"></p>
-			</fieldset>
-			<input type="hidden" name="lang" value="pl">
-			<input type="hidden" name="fdate" id="coampsform-date" value="">
-			<div class="buttons ui-grid-a">
-				<div class="ui-block-a">
-					<input type="submit" value="Meteo.pl" name="submit">
-				</div>
-				<div class="ui-block-b">
-					<input type="button" data-i18n-key="button-refresh" value="odśwież położenie" onclick="mMeteo.fillGeo ()">
-				</div>
-			</div>
-		</form>
-	</div><!-- /content -->
-	
 </div><!-- /page -->
 
 <!--
@@ -169,6 +127,48 @@
 					<span data-lang="en">FAQ</span>
 				</h2>
 				<div data-role="collapsible-set" data-theme="d" data-content-theme="d">
+					<div data-role="collapsible" data-collapsed="false">
+						<h3>
+							<span data-lang="pl">Po co dwie prognozy?</span>
+							<span data-lang="en">Why are there two forecasts?</span>
+						</h3>
+						<div data-lang="pl">
+							<p>Krótkoterminowa prognoza (najbliższe 2 doby) jest zwykle bardziej dokładna niż ta długa (4 doby). Są one jednak także nieco inaczej wyliczane (tzw. model UM i COAMPS). Zainteresowanych szczegółami odsyłam na stronę <a href="www.meteo.pl" target="_blank">www.meteo.pl</a> (są tam maile kontaktowe do autorów).</p>
+							<p>Najważniejsze jest to, że spojrzenie na obie prognozy daje większą pewność co do prognozy. Jeśli np. jedna mówi, że jutro będzie deszcz, a druga że nie będzie, to lepiej wziąć parasol :-).</p>
+						</div>
+						<div data-lang="en">
+							<p>Short-term forecast (next 2 days) is usually more accurate then the long one (4 days). But they are also computed in a different way (so called UM and COAMPS model). More info on <a href="www.meteo.pl" target="_blank">www.meteo.pl</a> (you'll find contact e-mails there).</p>
+							<p>More importantly if you look at both forecast you will be able to gain more confident knowledge of the forecast. For example if one forecast says it will rain tomorrow and the other one says it won't, then you should take your umbrella anyway :-).</p>
+						</div>
+					</div>
+					<div data-role="collapsible">
+						<h3>
+							<span data-lang="pl">Jak sprawdzić pogodę z mojej okolicy?</span>
+							<span data-lang="en">How to check forecast for my neighborhood?</span>
+						</h3>
+						<div data-lang="pl">
+							<p>Otwierając stronę z prognozą w lewym rogu zobaczysz tzw. różę wiatrów, czy właściwie strzałki nawigacyjne. Dzięki nim możesz poruszać się po okolicy (strzałka w prawo leci na wschód, strzałka do góry na północ itd.).</p>
+							<p>Prognozy w okolicy mogą też dać dobry pogląd na to jak bardzo zmienna może być pogoda u Ciebie.</p>
+						</div>
+						<div data-lang="en">
+							<p>After you open a forecast page, you will find a kind of a wind (compass) rose with navigation arrows. By clicking on them you can move around your neighborhood (right arrow moves you east, up arrow north etc).</p>
+							<p>Neighborhood forecasts should give you a good overview of how stable the wheather will be.</p>
+						</div>
+					</div>
+					<div data-role="collapsible">
+						<h3>
+							<span data-lang="pl">Jak działa wykrywanie położenia?</span>
+							<span data-lang="en">How does position refresh works?</span>
+						</h3>
+						<div data-lang="pl">
+							<p>Położenie (długość i szerokość geograficzna) jest ustalane przez Twoją przeglądarkę internetową. Może ona korzystać z połączenia sieciowego lub GPS. Lepsze wyniki zwykle uzyskuje się przy włączonym połączeniu bezprzewodowym (WiFi lub komórkowe) niż kablowym. Jeśli masz taką możliwość, włącz sieć bezprzewodową lub GPS.</p>
+							<p>Pamiętaj, że niektóre przeglądarki/telefony zapytają, czy można udostępnić połączenie tej aplikacji. Jeśli nie chcesz (lub nie możesz) tego robić, to możesz wpisać dowolne położenie ręcznie.</p>
+						</div>
+						<div data-lang="en">
+							<p>Position (latitude and longitude) is acquired from your browser. It can use your Internet connection or GPS. More accurate results usually gives a wireless connection (WiFi or mobile) rather then cable connection. If you can turn on your wireless receiver or GPS.</p>
+							<p>Note that some browsers/phones will ask you for permission to share your position with this application. If you don't want (or can't) do that, you can always type in any position manually.</p>
+						</div>
+					</div>
 					<div data-role="collapsible">
 						<h3>
 							<span data-lang="pl">Dlaczego nie działa zapis?</span>
@@ -179,18 +179,6 @@
 						</div>
 						<div data-lang="en">
 							<p>If saving doesn't work then your cellphone doesn't have JavaScript enabled. This application needs JavaScript to work properly.</p>
-						</div>
-					</div>
-					<div data-role="collapsible">
-						<h3>
-							<span data-lang="pl">Jak działa wykrywanie położenia?</span>
-							<span data-lang="en">How does position refresh works?</span>
-						</h3>
-						<div data-lang="pl">
-							<p>Odp.</p>
-						</div>
-						<div data-lang="en">
-							<p>Ans.</p>
 						</div>
 					</div>
 					<!--
@@ -255,17 +243,20 @@
 <div data-role="multipagefooter" data-position="fixed">
 	<div data-role="navbar">
 		<ul>
+			<!--
 			<li><a href="index.html" data-icon="back" data-rel="back">
 				<span data-lang="en">Back</span>
 				<span data-lang="pl">Powrót</span>
 			</a></li>
+			-->
+			<li><a href="#page-start" data-icon="home" data-i18n-key="title-forecast">Prognoza</a></li>
 			<li><a href="#page-settings" data-icon="gear">
 				<span data-lang="pl">Ustawienia</span>
 				<span data-lang="en">Settings</span>
 			</a></li>
 			<li><a href="#page-about" data-icon="info">
-				<span data-lang="en">About</span>
-				<span data-lang="pl">O programie</span>
+				<span data-lang="en">Help</span>
+				<span data-lang="pl">Pomoc</span>
 			</a></li>
 		</ul>
 	</div>
