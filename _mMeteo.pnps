@@ -4,4 +4,7 @@
 <e p="mMeteo\lib" x="false"></e>
 <e p="mMeteo\logo" x="false"></e>
 <e p="mMeteo\root" x="true"></e>
-<e p="mPatron" x="false"></e></ViewState></pd>
+<e p="mPatron\root" x="false"></e>
+<e p="mPatron" x="true"></e>
+<e p="mPatron\lib" x="false"></e>
+<e p="mPatron\logo" x="false"></e></ViewState></pd>

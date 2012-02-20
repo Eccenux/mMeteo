@@ -5,6 +5,7 @@
 # Other settings:
 #* get position: automatic*, only manual, save previous; *default, position is acquired when the application is loaded.
 #* skin
+#* Navigation buttons: icons&text | icons | text
 # Add some feedback when position is being acquired.
 # Saving favorite positions (would allow to get position without WiFi or GPS)?
 # Favorite position loaded at startup?
