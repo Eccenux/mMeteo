@@ -13,7 +13,7 @@
 		Building i18n labels for data objects:
 		\li label-[objectFieldName]...-[objectFieldName]
 		\li label-[objectFieldName]...-[objectFieldName]-[optionName]
-		@see window.mMeteo.storage.schema
+		@see mMeteo.storage.js
 	
 	@note
 		<p>This object will be replaced upon setup of the i18n class and stored internally</p>

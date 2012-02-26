@@ -22,7 +22,7 @@
 	//
 	// Setup JS i18n
 	// (see below for HTML setup)
-	var lang = _self.storage.data.settings.language;
+	var lang = _self.storage.get('settings.language');
 	_self.i18n = new I18n(_self.i18n, lang);
 	
 	//

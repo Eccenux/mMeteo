@@ -1,5 +1,5 @@
 /**
-	@file mMeteo model (schema with defaults) and test data
+	@file mMeteo model (schema with defaults) and inital/test data
 
     Copyright:  ©2012 Maciej "Nux" Jaros
 	  License:  CC-BY-SA
@@ -15,71 +15,39 @@
 (function($, _self)
 {
 	/**
-		Init
-	*/
-	_self.storage.init = function ()
-	{
-		$.storage = new $.store(); 
-		var data = $.storage.get (_self.storage.storageKey);
-		if (data)	// not null and not undefined
-		{
-			_self.storage.data = data;
-		}
-	}
-	/**
-		Save all data from temp store (storage.data) to permanent store
-	*/
-	_self.storage.save = function ()
-	{
-		$.storage.set (_self.storage.storageKey, _self.storage.data);
-	}
-	/**
-		Remove all data from permanent store
-	*/
-	_self.storage.remove = function ()
-	{
-		$.storage.flush();
-	}
-	
-	/**
 		Schema
 		
-		Building i18n labels:
-		\li label-[objectFieldName]...-[objectFieldName]
-		\li label-[objectFieldName]...-[objectFieldName]-[optionName]
-
-		Building field name/id:
-		\li [formName]-[objectFieldName]
-		
-		@note value for a field is the default value
-		
-		Types:
-		\li text - simple, short text
-		\li password - text that should not be visible when typing (re-entering advised or show/hide characters); should be encrypted
-		\li url - simple, short text
-		\li textarea - multi-line text
-		\li select - one of values in options array (for labels see above)
-		\li flip - flip switch yes/no select (true/false)
-		\li id - non-editable item identification value, should auto-increment on insert and MUST update (usualy increment) lastId of the container object
-		
+		@see mMeteo.storage.js
 	*/
 	_self.storage.schema =
 	{
 		settings :
 		{
-			 language         : {type:"select", value:"pl", options:["pl", "en"]}
+			_isObject        : true
+			,language        : {type:"select", value:"pl", options:["pl", "en"]}
+			// type of animation in transitions between pages
+			,pageTransitions : {type:"select", value:"none", options:['none', 'slide', 'slideup', 'slidedown', 'pop', 'fade', 'flip']}
+			// type of footer/buttons: fixed to bottom*, below content, below header; *default, but don't work too good on all phones (browsers)
+			,mainNaviPosition: {type:"select", value:"bottom-fixed", options:['bottom-fixed', 'below-content', 'below-header']}
+			// Navigation buttons
+			,mainNaviFormat  : {type:"select", value:"icons&text", options:['icons&text', 'icons-only', 'text-only']}
+			// get position: automatic*, only manual, save previous**; *position is acquired when the application is loaded, **default.
+			,getPositionType : {type:"select", value:"automatic", options:['automatic', 'manual-only', 'manual-saving']}
+			// skin (mmeteo = whatever default; other: a,b,c,d,e? colors?)
+			,skin            : {type:"select", value:"mmeteo", options:['mmeteo']}
 		}
 	};
 
 	/**
-		Test data
-	*/
-	_self.storage.data =
+		Initial/test data
+	*
+	_self.storage.initialData =
 	{
 		settings :
 		{
 			 language : "pl"
 		}
 	};
+	/**/
 
 })(jQuery, window.mMeteo);

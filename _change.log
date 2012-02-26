@@ -3,13 +3,17 @@
 #* type of animation in transitions between pages
 #* type of footer/buttons: fixed to bottom*, below content, below header; *default, but don't work too good on all phones (browsers)
 # Other settings:
-#* get position: automatic*, only manual, save previous; *default, position is acquired when the application is loaded.
+#* get position: automatic*, only manual, save previous**; *position is acquired when the application is loaded, **default.
 #* skin
 #* Navigation buttons: icons&text | icons | text
 # Add some feedback when position is being acquired.
 # Saving favorite positions (would allow to get position without WiFi or GPS)?
 # Favorite position loaded at startup?
 # PhoneGap app?
+
+== 0.3.0 ==
+# New I/O methods in storage (indirect data access).
+# ...
 
 == 0.2.0 ==
 # Integrate meteo forms (single page with a target switch).

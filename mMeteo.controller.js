@@ -35,7 +35,7 @@
 		*/
 		// for short...
 		var schema = _self.storage.schema.settings;
-		var data = _self.storage.data.settings;
+		var data = _self.storage.get ('settings');
 		// language labels/options
 		var languageLabels = [];
 		for (var i = 0; i < schema.language.options.length; i++)
@@ -79,8 +79,7 @@
 			}
 			*/
 			// save
-			_self.propertiesCopy (window.tmpSettings, data);
-			_self.storage.save ();
+			_self.storage.set ('settings', window.tmpSettings);
 			// go back (close)
 			// history.go(-1);
 			// refresh to main

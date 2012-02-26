@@ -48,4 +48,5 @@
 <File path="mMeteo.controller.js"></File>
 <File path="mMeteo.setup.js"></File>
 <File path="mMeteo.geo.js"></File>
-<File path="mMeteo.utils.js"></File></Folder></Project>
+<File path="mMeteo.utils.js"></File>
+<File path="mMeteo.storage.js"></File></Folder></Project>

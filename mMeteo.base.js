@@ -12,13 +12,14 @@
 window.mMeteo =
 {
 	//! storage schema, data and basic data manipulation object/class
-	//! @see lib/jquery.store.js
-	//! @see mMeteo.model.js
+	//! @see lib/jquery.store.js Core storage class (used in storage functions)
+	//! @see mMeteo.storage.js Storage class for high level data manipulation
+	//! @see mMeteo.model.js Model for this application
 	storage :
 	{
 		schema : null
 		,
-		data : null
+		initialData : null
 		,
 		storageKey : 'mMeteoData'
 	}

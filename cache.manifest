@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# application version 0.2.4
+# application version 0.2.5
 CACHE:
 index.html
 
@@ -13,6 +13,7 @@ mMeteo.i18n.js
 mMeteo.model.js
 mMeteo.setup.js
 mMeteo.utils.js
+mMeteo.storage.js
 
 lib/base/jquery-min.js
 lib/jquery.store.js
