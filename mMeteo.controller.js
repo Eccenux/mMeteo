@@ -30,36 +30,15 @@
 	{
 		//
 		// setup form
-		/*
-			 language         : {type:"select", value:"pl", options:["pl", "en"]}
-		*/
-		// for short...
-		var schema = _self.storage.schema.settings;
-		var data = _self.storage.get ('settings');
-		// language labels/options
-		var languageLabels = [];
-		for (var i = 0; i < schema.language.options.length; i++)
-		{
-			languageLabels.push({
-				lbl   : _self.i18n.get("label-settings-language-" + schema.language.options[i])
-				,
-				value : schema.language.options[i]
-			})
-		}
-		// deep copy of the library object to avoid immediate changes to store (only save on save button)
-		window.tmpSettings = _self.deepClone (data);
-		// get HTML
+		
+		// create HTML
+		_self.formCreator.init('settings');	// sets //window.tmpFormData['settings'] 
 		var formData = formCreator (
 		[
-			{
-				type      : schema.language.type
-				,name     : 'settings-language'
-				,title    : _self.i18n.get("label-settings-language")
-				,lbls     : languageLabels
-				,value    : data.language
-				,jsUpdate : 'tmpSettings.language = jQuery(this).val()'
-			}
+			_self.getFormCreatorElementOptions('language')
 		]);
+		_self.formCreator.close();
+		
 		// insert HTML
 		$('#settings-form').html(formData);
 
@@ -68,29 +47,24 @@
 		
 		//
 		// save action
-		var saveAction = function()
-		{
-			/*
-			// simple validation
-			if (window.tmpSettings.name.length < 0)
+		$('#settings-form')
+			.unbind()
+			.submit(function()
 			{
-				alert(_self.i18n.get("error: name must not be empty"));
+				// save
+				_self.storage.set ('settings', window.tmpFormData['settings']);
+				// refresh to main
+				location.href = 'index.html';
 				return false;
-			}
-			*/
-			// save
-			_self.storage.set ('settings', window.tmpSettings);
-			// go back (close)
-			// history.go(-1);
-			// refresh to main
-			location.href = 'index.html';
-			return false;
-		}
-		// bind
+			})
+		;
+		// bind save button with submit
 		$('#settings-submit-btn')
-		.unbind()
-		.click(saveAction);
-		// TODO submit (ENTER)
-		$('#settings-form').trigger( "create" );
+			.unbind()
+			.click(function()
+			{
+				$('#settings-form').submit();
+			})
+		;
 	}
 })(jQuery, window.mMeteo);

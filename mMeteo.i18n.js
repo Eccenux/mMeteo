@@ -49,7 +49,7 @@ window.mMeteo.i18n = {"":""
 		,"label-longitude" : "Długość (E)"
 		// settings
 		,"label-settings-language"         : "Język"
-		,"label-settings-language-pl"      : "polski"
+		,"label-settings-language-pl"      : "Polski"
 		,"label-settings-language-en"      : "English"
 		// other
 		,"button-refresh" : "Odśwież położenie"
@@ -76,7 +76,7 @@ window.mMeteo.i18n = {"":""
 		,"label-longitude" : "Longitude (E)"
 		// settings
 		,"label-settings-language"         : "Language"
-		,"label-settings-language-pl"      : "polski"
+		,"label-settings-language-pl"      : "Polski"
 		,"label-settings-language-en"      : "English"
 		// other
 		,"button-refresh" : "Refresh position"

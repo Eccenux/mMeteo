@@ -14,6 +14,7 @@ mMeteo.model.js
 mMeteo.setup.js
 mMeteo.utils.js
 mMeteo.storage.js
+mMeteo.forms.js
 
 lib/base/jquery-min.js
 lib/jquery.store.js

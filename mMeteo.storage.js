@@ -118,6 +118,8 @@
 		@example
 			For baseObject = {test:{blah:[1,2,3], more:{levels:1}}}, objectPath = 'test.something'
 			Running _createObjectByPath(.) will change baseObject to: {test:{blah:[1,2,3], more:{levels:1}, something:{}}}
+			
+		@return Last created object (or undefined upon error)
 	*/
 	var _createObjectByPath = function (baseObject, objectPath)
 	{
@@ -134,8 +136,8 @@
 			if (typeof(baseObject[objectPath]) == 'undefined')
 			{
 				baseObject[objectPath] = new Object();
-				data = baseObject[objectPath];
 			}
+			data = baseObject[objectPath];
 		}
 		// deeper create
 		else
