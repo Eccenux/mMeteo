@@ -24,6 +24,12 @@
 	// (see below for HTML setup)
 	var lang = _self.storage.get('settings.language');
 	_self.i18n = new I18n(_self.i18n, lang);
+
+	//
+	// Setup validation
+	//
+ 	$.extend($.validator.messages, _self.i18n.get("validator-messages"));
+	$.metadata.setType('html5');
 	
 	//
 	// Onready, general setup
@@ -34,64 +40,6 @@
 		// TEMP - setup fixed headers
 		//$('div[data-role="header"]').attr('data-position', 'fixed');
 		
-		//
-		// Setup geolocation
-		_self.fillGeo ();
-		
-		//
-		// Setup submit action
-		$('#forecastform').submit(function()
-		{
-			// auto-fix values
-			var ll = { lat: $('#forecastform-lat').val(), lon: $('#forecastform-lon').val() };
-			ll.lat = ll.lat.replace(/,/, '.')
-			ll.lon = ll.lon.replace(/,/, '.')
-			$('#forecastform-lat').val(ll.lat);
-			$('#forecastform-lon').val(ll.lon);
-
-			// validate values
-			var info = "";
-			if (ll.lat == '' || ll.lon == '')
-			{
-				info = "error: position empty";
-			}
-			else if (ll.lat.search(/^[0-9.]+$/) < 0 || ll.lon.search(/^[0-9.]+$/) < 0)
-			{
-				info = "error: position must be decimal";
-			}
-			
-			// show error
-			if (info.length)
-			{
-				alert(_self.i18n.get(info));
-				return false;
-			}
-			
-			// switch between two forms
-			var modelChoosen = $('#forecastform').attr('data-model');	// this was set onclick
-			if (modelChoosen == 'um')
-			{
-				if (typeof(UM_FULLDATE) != 'undefined')		// UM_FULLDATE is from http://www.meteo.pl/meteorogram_um_js.php
-				{
-					$('#forecastform-date').val(UM_FULLDATE);
-				}
-			}
-			else
-			{
-				if (typeof(COAMPS_FULLDATE) != 'undefined')	// COAMPS_FULLDATE is from http://www.meteo.pl/meteorogram_coamps_js.php
-				{
-					$('#forecastform-date').val(COAMPS_FULLDATE);
-				}
-			}
-			// setup action
-			var actionUrl = $('#forecastform').attr('data-action-'+modelChoosen);
-			if (actionUrl)
-			{
-				$('#forecastform').attr('action', actionUrl);
-			}
-			return true;
-		});
-
 		//
 		// Setup i18nalized HTML
 		// hide all marked with language attribute and show thoose having current language
@@ -110,6 +58,14 @@
 				$(this).html(_self.i18n.get(key));
 			}
 		});
+		
+		//
+		// Main page must be set-up when no hash or just hash is given
+		// (if hash is not given jQueryMobile doeasn't call pagebeforechange with url in toPage)
+		if (location.hash.length <= 1)
+		{
+			_self.controller.start();
+		}
 	});
 
 	//
@@ -170,6 +126,5 @@
 			}
 		}
 	});
-	/**/
 	
 })(jQuery, window.mMeteo);

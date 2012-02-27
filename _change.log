@@ -13,7 +13,15 @@
 
 == 0.3.0 ==
 # New I/O methods in storage (indirect data access).
-# Easier creation of new fields.
+# Easier creation of new fields (_self.form).
+# Validation
+## jQuery validator + HTML5 metadata reader.
+## Form creator validation options.
+## Allow i18n.get to return an object (for plugins).
+## I18n for validation plugin for pl&en.
+## Our form validation and focus.
+# Logo scripts and source files moved to _src for easier publishing
+# Some cleanup (most importantly moved start page setup to a start controller)
 # ...
 
 == 0.2.0 ==

@@ -53,6 +53,31 @@ window.mMeteo.i18n = {"":""
 		,"label-settings-language-en"      : "English"
 		// other
 		,"button-refresh" : "Odśwież położenie"
+		// forms basics
+		,"form-invalid" : "Proszę poprawić formularz"
+		,"submit"       : "Zapisz"
+		// Translated default messages for the jQuery validation plugin.
+		,"validator-messages" :
+		{
+			required: "To pole jest wymagane.",
+			remote: "Proszę o wypełnienie tego pola.",
+			email: "Proszę o podanie prawidłowego adresu email.",
+			url: "Proszę o podanie prawidłowego URL.",
+			date: "Proszę o podanie prawidłowej daty.",
+			dateISO: "Proszę o podanie prawidłowej daty (ISO).",
+			number: "Proszę o podanie prawidłowej liczby.",
+			digits: "Proszę o podanie samych cyfr.",
+			creditcard: "Proszę o podanie prawidłowej karty kredytowej.",
+			equalTo: "Proszę o podanie tej samej wartości ponownie.",
+			accept: "Proszę o podanie wartości z prawidłowym rozszerzeniem.",
+			maxlength: jQuery.validator.format("Proszę o podanie nie więcej niż {0} znaków."),
+			minlength: jQuery.validator.format("Proszę o podanie przynajmniej {0} znaków."),
+			rangelength: jQuery.validator.format("Proszę o podanie wartości o długości od {0} do {1} znaków."),
+			range: jQuery.validator.format("Proszę o podanie wartości z przedziału od {0} do {1}."),
+			max: jQuery.validator.format("Proszę o podanie wartości mniejszej bądź równej {0}."),
+			min: jQuery.validator.format("Proszę o podanie wartości większej bądź równej {0}.")
+		}
+
 	}
 	// English
 	,'en' : {"":""
@@ -80,5 +105,29 @@ window.mMeteo.i18n = {"":""
 		,"label-settings-language-en"      : "English"
 		// other
 		,"button-refresh" : "Refresh position"
+		// forms basics
+		,"form-invalid" : "Please correct the form"
+		,"submit"       : "Save"
+		// Translated default messages for the jQuery validation plugin.
+		,"validator-messages" :
+		{
+			required: "This field is required.",
+			remote: "Please fix this field.",
+			email: "Please enter a valid email address.",
+			url: "Please enter a valid URL.",
+			date: "Please enter a valid date.",
+			dateISO: "Please enter a valid date (ISO).",
+			number: "Please enter a valid number.",
+			digits: "Please enter only digits.",
+			creditcard: "Please enter a valid credit card number.",
+			equalTo: "Please enter the same value again.",
+			accept: "Please enter a value with a valid extension.",
+			maxlength: $.validator.format("Please enter no more than {0} characters."),
+			minlength: $.validator.format("Please enter at least {0} characters."),
+			rangelength: $.validator.format("Please enter a value between {0} and {1} characters long."),
+			range: $.validator.format("Please enter a value between {0} and {1}."),
+			max: $.validator.format("Please enter a value less than or equal to {0}."),
+			min: $.validator.format("Please enter a value greater than or equal to {0}.")
+		}
 	}
 };

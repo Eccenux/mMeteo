@@ -14,7 +14,7 @@
 */
 (function($, _self)
 {
-	_self.formCreator = new Object();
+	_self.form = new Object();
 
 	/**
 		Current schema part
@@ -40,7 +40,7 @@
 		@note You can use `window.tmpFormData[baseObjectName]`
 			to access current data.
 	*/
-	_self.formCreator.init = function (baseObjectName)
+	_self.form.init = function (baseObjectName)
 	{
 		if (_isCreatorAlreadyStarted)
 		{
@@ -63,7 +63,7 @@
 	/**
 		Close creation (destructor)
 	*/
-	_self.formCreator.close = function ()
+	_self.form.close = function ()
 	{
 		_schemaPart = _dataPart = _baseObjectName = _isCreatorAlreadyStarted = null;
 	};
@@ -86,7 +86,7 @@
 			All of the below should work for _schemaPart[objectName].type = 'select'
 			Add other types...
 	*/
-	_self.getFormCreatorElementOptions = function (objectName)
+	_self.form.getElementOptions = function (objectName)
 	{
 		if (!_isCreatorAlreadyStarted)
 		{
@@ -112,6 +112,33 @@
 			,value    : _dataPart[objectName]
 			,jsUpdate : 'window.tmpFormData.'+_baseObjectName+'.'+objectName+' = jQuery(this).val()'
 		};
+	};
+
+	/**
+		Our form validation
+		
+		@param form A DOM element of the form
+	*/
+	_self.form.valid = function(form)
+	{
+		// validation with plugin
+		if (!$(form).valid())
+		{
+			var $focused = $( document.activeElement );
+			alert( _self.i18n.get("form-invalid") );
+			// focus previous if was invalid
+			if ($focused.is(':input.error'))	// was already focused?
+			{
+				$focused.focus();
+			}
+			// focus first invalid
+			else
+			{
+				$(':input.error', form)[0].focus();
+			}
+			return false;
+		}
+		return true;
 	};
 
 })(jQuery, window.mMeteo);
