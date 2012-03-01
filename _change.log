@@ -20,9 +20,10 @@
 ## Allow i18n.get to return an object (for plugins).
 ## I18n for validation plugin for pl&en.
 ## Our form validation and focus.
-# Logo scripts and source files moved to _src for easier publishing
-# Some cleanup (most importantly moved start page setup to a start controller)
-# ...
+# Logo scripts and source files moved to _src for easier publishing.
+# Some cleanup (most importantly moved start page setup to a start controller).
+# Even more cleanup (moved mMeteo to more generala "namespace": mJqmApplication).
+# Support for items in model (changes in forms creation and storage).
 
 == 0.2.0 ==
 # Integrate meteo forms (single page with a target switch).

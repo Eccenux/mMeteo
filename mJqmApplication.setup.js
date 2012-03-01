@@ -1,5 +1,5 @@
 /**
-	@file mMeteo setup of controllers mapping and general initialization
+	@file mJqmApplication setup of controllers mapping and general initialization
 
     Copyright:  ©2012 Maciej "Nux" Jaros
 	  License:  CC-BY-SA
@@ -24,7 +24,7 @@
 	// (see below for HTML setup)
 	var lang = _self.storage.get('settings.language');
 	_self.i18n = new I18n(_self.i18n, lang);
-
+	
 	//
 	// Setup validation
 	//
@@ -64,7 +64,10 @@
 		// (if hash is not given jQueryMobile doeasn't call pagebeforechange with url in toPage)
 		if (location.hash.length <= 1)
 		{
-			_self.controller.start();
+			if (_self.controller && typeof(_self.controller.start) == 'function')
+			{
+				_self.controller.start();
+			}
 		}
 	});
 
@@ -127,4 +130,4 @@
 		}
 	});
 	
-})(jQuery, window.mMeteo);
+})(jQuery, window.mJqmApplication);

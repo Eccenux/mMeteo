@@ -1,5 +1,5 @@
 /**
-	@file mMeteo utility functions
+	@file mJqmApplication utility functions
 
     Copyright:  ©2012 Maciej "Nux" Jaros
 	  License:  CC-BY-SA
@@ -14,18 +14,6 @@
 */
 (function($, _self)
 {
-	/**
-		(re)Fill geolocation info
-	*/
-	_self.fillGeo = function ()
-	{
-		_self.geo.initGet (function(pos)
-		{
-            $('#forecastform-lat').val(pos.coords.latitude);
-            $('#forecastform-lon').val(pos.coords.longitude);
-		});
-	}
-	
 	/**
 		Get by ID helper function
 		
@@ -45,7 +33,7 @@
 		}
 		
 		return item;
-	}
+	};
 
 	/**
 		Remove by ID helper function
@@ -63,7 +51,7 @@
 				break;
 			}
 		}
-	}
+	};
 
 	/**
 		Activate links with special attribute to work accros various solutions
@@ -92,52 +80,25 @@
 				event.preventDefault();
 				return false;
 			})
-	}
+		;
+	};
 
 	/**
-		Create a deep (recursive) copy of an object
+		Create a deep (recursive) copy of an object (or an array)
 		
 		@param source Object to be cloned
 		@return Cloned object (related only by value)
 	*/
 	_self.deepClone = function(source)
 	{
-		return $.extend(true, {}, source);
-	}
-
-	/**
-		Clone an array
-		
-		@param source Object to be cloned
-		@return Cloned object (related only by value)
-	*/
-	_self.arrayClone = function(source)
-	{
-		var destination = [];
-		for (var i = 0; i < source.length; i++)
+		if ($.isArray(source))
 		{
-			destination[i] = source[i];
+			return $.extend(true, [], source);
 		}
-		return destination;
-	}
-	
-	/**
-		Copy properties of one object to another
-		
-		@param source Source object
-		@param destination Destination object
-
-		@note Assumes one level properties (i.e. pairs like: {key:'value',...} rather then {key:{sub:'value'}...})
-	*/
-	_self.propertiesCopy = function(source, destination)
-	{
-		for (var key in source)
+		else
 		{
-			if (source.hasOwnProperty(key))
-			{
-				destination[key] = source[key];
-			}
+			return $.extend(true, {}, source);
 		}
-	}
+	};
 	
-})(jQuery, window.mMeteo);
+})(jQuery, window.mJqmApplication);

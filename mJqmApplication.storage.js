@@ -1,5 +1,5 @@
 /**
-	@file mMeteo storage class/module
+	@file mJqmApplication storage class/module
 
     Copyright:  ©2012 Maciej "Nux" Jaros
 	  License:  CC-BY-SA
@@ -35,23 +35,84 @@
 		// if storage empty then add inital data
 		else
 		{
-			dataStore = _self.storage.initialData;
+			dataStore = null;
+			if ('initialData' in _self.storage)
+			{
+				dataStore = _self.storage.initialData;
+			}
 		}
-	}
+	};
 	/**
-		Save all data from temp store (storage.data) to permanent store
+		Save all data from temp store (dataStore) to permanent store
 	*/
 	_self.storage.save = function ()
 	{
 		$.storage.set (_self.storage.storageKey, dataStore);
-	}
+	};
 	/**
+		Clear all storage contents
+		
 		Remove all data from permanent store
+		
+		@note That this will fallback to initialData if it was defined
 	*/
-	_self.storage.remove = function ()
+	_self.storage.clear = function ()
 	{
+		dataStore = null;
+		if ('initialData' in _self.storage)
+		{
+			dataStore = _self.storage.initialData;
+		}
 		$.storage.flush();
-	}
+	};
+
+	/**
+		Copy properties of one object to another
+		
+		Also works for arrays.
+		
+		@param source Source object
+		@param destination Destination object
+
+		@warning Removes destination keys that doesn't exist in source.
+	*/
+	var _propertiesXorCopy = function(source, destination)
+	{
+		// for arrays - start a new
+		if ($.isArray(source))
+		{
+			destination.length = 0;
+		}
+		// for objects remove nonexistent keys
+		else
+		{
+			for (var key in destination)
+			{
+				if (destination.hasOwnProperty(key) && !source.hasOwnProperty(key))
+				{
+					destination[key] = undefined;
+				}
+			}
+		}
+		
+		// copy existent keys from source (this should also works for array elements)
+		for (var key in source)
+		{
+			if (source.hasOwnProperty(key))
+			{
+				// objects need to be cloned (or changes in the destination would change the source)
+				if (typeof(source[key]) == 'object')
+				{
+					destination[key] = _self.deepClone(source[key]);
+				}
+				// don't clone strings, numbers and such...
+				else
+				{
+					destination[key] = source[key];
+				}
+			}
+		}
+	};
 
 	/**
 		Get object by path
@@ -101,7 +162,33 @@
 		}
 		
 		return data;
-	}
+	};
+
+	/**
+		Get parent object by path
+		
+		@param baseObject
+			Base object (source)
+		@param objectPath
+			Either direct key as in _self.storage.schema
+			or key.subkey.subkey...
+			
+		@return null (if not found) or the object
+	*/
+	var _getParentObjectByPath = function (baseObject, objectPath)
+	{
+		// no parent?
+		if (objectPath.indexOf('.')==-1)
+		{
+			return null;
+		}
+		
+		// parent path
+		objectPath = objectPath.replace(/(.+)\..+/, '$1');
+		
+		// get & return
+		return _getObjectByPath (baseObject, objectPath);
+	};
 
 	/**
 		Create empty object by path
@@ -125,7 +212,7 @@
 	{
 		if (baseObject==null || typeof(baseObject)!='object')
 		{
-			return;
+			return undefined;
 		}
 		
 		var data;
@@ -143,7 +230,7 @@
 		else
 		{
 			var path = objectPath.split('.');
-			var data = baseObject;
+			data = baseObject;
 			for (var i = 0; i < path.length; i++)
 			{
 				if (typeof(data[path[i]]) == 'undefined')
@@ -155,7 +242,31 @@
 		}
 		
 		return data;
-	}
+	};
+
+	/**
+		Get schema part for given path
+		
+		@param objectPath
+			Either direct key in _self.storage.schema
+			or key.subkey.subkey...
+		
+		@return schema part or null when not found
+	*/
+	_self.storage.getSchema = function (objectPath)
+	{
+		var schemaPart = _getObjectByPath(_self.storage.schema, objectPath);
+		if (schemaPart == null)
+		{
+			return null;
+		}
+		if (typeof(schemaPart) == 'object')	// includes arrays
+		{
+			schemaPart = _self.deepClone (schemaPart);
+		}
+		
+		return schemaPart;
+	};
 
 	/**
 		Get data (either stored or default)
@@ -179,7 +290,7 @@
 		{
 			return data;	//! @todo or should we return null? Updates?
 		}
-		if (typeof(schemaPart) == 'object')
+		if (typeof(schemaPart) == 'object')	// includes arrays
 		{
 			schemaPart = _self.deepClone (schemaPart);
 		}
@@ -190,23 +301,81 @@
 			return data;	//! @todo or should we validate this anyway e.g. for type:"select"?
 		}
 		
-		// we got a leaf (and assuming not to have data) - return default
-		if (!schemaPart._isObject)
+		// items array - by default empty
+		if ($.isArray(schemaPart))
+		{
+			if (data == null)
+			{
+				data = [];
+			}
+			return data;
+		}
+		// leaf object - return default
+		else if (schemaPart.type)
 		{
 			return schemaPart.value;
 		}
-		
-		// go through schema part and add defaults to data
-		//schemaPart._isObject = true;
-		if (data == null)
+		// normal object - copy defaults to data
+		else
 		{
-			data = new Object();
+			if (data == null)
+			{
+				data = new Object();
+			}
+			_copyDefaults (schemaPart, data);
+			return data;
 		}
-		_copyDefaults (schemaPart, data);
+	};
+
+	/**
+		Get new item (defaults)
 		
-		// go it - return it
-		return data;
-	}
+		@param objectPath
+			Either direct key in _self.storage.schema
+			or key.subkey.subkey...
+		
+		@note
+			The path MUST point to an array of items.
+			The parent SHOULD also contain lastId element.
+			The lastId is set in data stored on the user side.
+			
+		@return object item with defaults set or null on error (e.g. path not found in schema)
+	*/
+	_self.storage.getNewItem = function (objectPath)
+	{
+		// get schema part for the data
+		var schemaPart = _getObjectByPath(_self.storage.schema, objectPath);
+		if (schemaPart == null || !$.isArray(schemaPart) || schemaPart.length < 1)
+		{
+			return null;
+		}
+		schemaPart = _self.deepClone (schemaPart);
+
+		// get stored, parent data
+		var parentData = _getParentObjectByPath(dataStore, objectPath);
+		
+		// data null or not an object - should not happen
+		if (!(parentData != null && typeof(parentData) == 'object'))
+		{
+			return null;
+		}
+		
+		// increment ID
+		if (!('lastId' in parentData))
+		{
+			parentData.lastId = 0;
+		}
+		parentData.lastId++;
+		
+		//! @todo should we save changes now?
+		
+		// setup new item object
+		var newItem = new Object();
+		_copyDefaults (schemaPart[0], newItem);
+		newItem.id = parentData.lastId;
+		
+		return newItem;
+	};
 
 	/**
 		Set data
@@ -226,12 +395,12 @@
 		{
 			dataStore = new Object();
 		}
-		var dataPart = _createObjectByPath (dataStore, objectPath)
+		var dataPart = _createObjectByPath (dataStore, objectPath);
 		
 		// copy and save
-		_self.propertiesCopy (data, dataPart);	//! @todo or should we validate data e.g. for interals type:"select"?
+		_propertiesXorCopy (data, dataPart);	//! @todo or should we validate data e.g. for interals type:"select"?
 		_self.storage.save ();
-	}
+	};
 	
 	/**
 		Copy defaults of one object to another
@@ -269,7 +438,7 @@
 				}
 			}
 		}
-	}
+	};
 	
 	/**
 		Schema
@@ -283,7 +452,7 @@
 		
 		@note value for a field is the default value
 		
-		@warning you MUST add `_isObject : true` for each non-leaf get-able schema object
+		@warning you MUST at least provide type for each leaf schema object
 		
 		Types:
 		\li text - simple, short text
@@ -297,4 +466,4 @@
 	*/
 	_self.storage.schema = {};
 	
-})(jQuery, window.mMeteo);
+})(jQuery, window.mJqmApplication);

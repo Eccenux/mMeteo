@@ -1,5 +1,5 @@
 /**
-	@file mMeteo i18n (language) file
+	@file mJqmApplication i18n (language) file
 
     Copyright:  ©2012 Maciej "Nux" Jaros
 	  License:  CC-BY-SA
@@ -13,7 +13,7 @@
 		Building i18n labels for data objects:
 		\li label-[objectFieldName]...-[objectFieldName]
 		\li label-[objectFieldName]...-[objectFieldName]-[optionName]
-		@see mMeteo.storage.js
+		@see mJqmApplication.storage.js
 	
 	@note
 		<p>This object will be replaced upon setup of the i18n class and stored internally</p>
@@ -26,7 +26,7 @@
 		<p>Pierwszy i drugi przykład przypisuje wartość do zmiennej. Drugi do razu ją wyświetla.</p>
 		<p>Należy zwrócić uwagę, że w message "_Hi_username" musi być zawarty tekst "{$username}".</p>	
 */
-window.mMeteo.i18n = {"":""
+window.mJqmApplication.i18n = {"":""
 	// Polski
 	,'pl' : {"":""
 		// errors
@@ -122,12 +122,12 @@ window.mMeteo.i18n = {"":""
 			creditcard: "Please enter a valid credit card number.",
 			equalTo: "Please enter the same value again.",
 			accept: "Please enter a value with a valid extension.",
-			maxlength: $.validator.format("Please enter no more than {0} characters."),
-			minlength: $.validator.format("Please enter at least {0} characters."),
-			rangelength: $.validator.format("Please enter a value between {0} and {1} characters long."),
-			range: $.validator.format("Please enter a value between {0} and {1}."),
-			max: $.validator.format("Please enter a value less than or equal to {0}."),
-			min: $.validator.format("Please enter a value greater than or equal to {0}.")
+			maxlength: jQuery.validator.format("Please enter no more than {0} characters."),
+			minlength: jQuery.validator.format("Please enter at least {0} characters."),
+			rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long."),
+			range: jQuery.validator.format("Please enter a value between {0} and {1}."),
+			max: jQuery.validator.format("Please enter a value less than or equal to {0}."),
+			min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
 		}
 	}
 };

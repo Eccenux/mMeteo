@@ -1,5 +1,5 @@
 /**
-	@file mMeteo JS controllers
+	@file mJqmApplication JS controllers
 
     Copyright:  ©2012 Maciej "Nux" Jaros
 	  License:  CC-BY-SA
@@ -21,13 +21,13 @@
 	*/
 	_self.controller.settings = function(parameters)
 	{
-		$thisForm = $('#settings-form');
-
+		var $thisForm = $('#settings-form');
+		
 		//
 		// setup form
 		
-		// create HTML
-		_self.form.init('settings');	// sets //window.tmpFormData['settings'] 
+		var tmpFormData = _self.form.init('settings');
+
 		// get HTML
 		var formData = formCreator (
 		[
@@ -40,13 +40,13 @@
 			}
 		]);
 		_self.form.close();
-		
+
 		// insert HTML
 		$thisForm.html(formData);
 
 		// re-render mobile page markup
 		$thisForm.trigger( "create" );
-
+		
 		// setup save button to submit form
 		$('#settings-submit-btn')
 			.unbind()
@@ -59,12 +59,12 @@
 
 		// validation setup
 		$thisForm.validate({meta: "validation"});
-		
+
 		//
 		// save action
 		$thisForm
 			.unbind()
-			.submit(function()
+			.submit(function(event)
 			{
 				// validation check
 				if (!_self.form.valid(this))
@@ -73,16 +73,29 @@
 				}
 
 				// save
-				_self.storage.set ('settings', window.tmpFormData['settings']);
-
+				_self.storage.set('settings', tmpFormData);
+				
 				// refresh to main (need this especially for language change)
 				location.href = 'index.html';
+				
 				event.preventDefault();
 				return false;
 			})
 		;
-	}
+	};
 	
+	/**
+		(re)Fill geolocation info
+	*/
+	var _fillGeo = function ()
+	{
+		_self.geo.initGet (function(pos)
+		{
+            $('#forecastform-lat').val(pos.coords.latitude);
+            $('#forecastform-lon').val(pos.coords.longitude);
+		});
+	};
+
 	/**
 		Start controller status
 	*/
@@ -102,7 +115,13 @@
 		
 		//
 		// Fill geolocation on load
-		_self.fillGeo ();
+		_fillGeo();
+		
+		// refresh button(s)
+		$('.refresh-geo').click(function()
+		{
+			_fillGeo();
+		});
 		
 		//
 		// Forecast submit action
@@ -110,8 +129,8 @@
 		{
 			// auto-fix values
 			var ll = { lat: $('#forecastform-lat').val(), lon: $('#forecastform-lon').val() };
-			ll.lat = ll.lat.replace(/,/, '.')
-			ll.lon = ll.lon.replace(/,/, '.')
+			ll.lat = ll.lat.replace(/,/, '.');
+			ll.lon = ll.lon.replace(/,/, '.');
 			$('#forecastform-lat').val(ll.lat);
 			$('#forecastform-lon').val(ll.lon);
 
@@ -157,6 +176,6 @@
 			}
 			return true;
 		});
-	}
+	};
 	
-})(jQuery, window.mMeteo);
+})(jQuery, window.mJqmApplication);

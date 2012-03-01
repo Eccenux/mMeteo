@@ -1,5 +1,5 @@
 /**
-	@file mMeteo gelocation utility functions
+	@file mJqmApplication gelocation utility functions
 
     Copyright:  ©2012 Maciej "Nux" Jaros
 	  License:  CC-BY-SA
@@ -15,7 +15,7 @@
 (function($, _self)
 {
 	_self.geo = new Object();
-	
+
 	/**
 		Init geolocation reader
 		
@@ -60,4 +60,4 @@
 		}
 	}
 
-})(jQuery, window.mMeteo);
+})(jQuery, window.mJqmApplication);

@@ -45,16 +45,16 @@
 	<script type="text/javascript" src="lib/I18n.js"></script>
 
 	<!-- this gadget -->
-	<link rel="stylesheet" href="./mMeteo.css">
-	<script type="text/javascript" src="./mMeteo.base.js"></script>
-	<script type="text/javascript" src="./mMeteo.utils.js"></script>
-	<script type="text/javascript" src="./mMeteo.i18n.js"></script>
-	<script type="text/javascript" src="./mMeteo.storage.js"></script>
-	<script type="text/javascript" src="./mMeteo.model.js"></script>
-	<script type="text/javascript" src="./mMeteo.geo.js"></script>
-	<script type="text/javascript" src="./mMeteo.controller.js"></script>
-	<script type="text/javascript" src="./mMeteo.setup.js"></script>
-	<script type="text/javascript" src="./mMeteo.forms.js"></script>
+	<link rel="stylesheet" href="./mJqmApplication.css">
+	<script type="text/javascript" src="./mJqmApplication.base.js"></script>
+	<script type="text/javascript" src="./mJqmApplication.utils.js"></script>
+	<script type="text/javascript" src="./mJqmApplication.utils.geo.js"></script>
+	<script type="text/javascript" src="./mJqmApplication.i18n.js"></script>
+	<script type="text/javascript" src="./mJqmApplication.storage.js"></script>
+	<script type="text/javascript" src="./mJqmApplication.model.js"></script>
+	<script type="text/javascript" src="./mJqmApplication.controller.js"></script>
+	<script type="text/javascript" src="./mJqmApplication.setup.js"></script>
+	<script type="text/javascript" src="./mJqmApplication.forms.js"></script>
 	
 	<!-- meteo.pl -->
 	<script type="text/javascript" src="http://www.meteo.pl/meteorogram_um_js.php"></script>
@@ -96,7 +96,7 @@
 					<input type="submit" data-i18n-key="title-coamps-model" value="Model COAMPS" id="submitCOAMPS" onclick="$('#forecastform').attr('data-model','coamps')">
 				</div>
 			</div>
-			<input type="button" data-i18n-key="button-refresh" data-icon="refresh" value="Odśwież położenie" onclick="mMeteo.fillGeo ()">
+			<input type="button" data-i18n-key="button-refresh" data-icon="refresh" value="Odśwież położenie" class="refresh-geo">
 		</form>
 	</div><!-- /content -->
 
@@ -241,7 +241,7 @@
 		
 		<form action="index.html" method="GET" data-ajax="false" id="settings-form">
 			<!--
-				@see mMeteo.controller.settings
+				@see mJqmApplication.controller.settings
 			-->
 		</form>
 	</div><!-- /content -->
