@@ -1,0 +1,4 @@
+Source (non-minified/packed) libraries.
+
+All with the exception of base libraries (jQuery mobile and jQuery)
+which are downloaded in an already minified state.

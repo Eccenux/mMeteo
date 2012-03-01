@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>jQuery validation plug-in - comment form example</title>
+<!--
+<link rel="stylesheet" type="text/css" media="screen" href="css/screen.css" />
+-->
+<link rel="stylesheet" href="jquerymobile/jquery.mobile.css">
+<script src="../lib/jquery-1.6.1.js" type="text/javascript"></script>
+<script src="../jquery.validate.js" type="text/javascript"></script>
+<script src="../lib/jquery.metadata.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="jquerymobile/jquery.mobile.js"></script>
+
+<script type="text/javascript">
+$(function() {
+	$.metadata.setType('html5')
+	
+	$("#commentForm").validate({meta: "validate"});
+	$("#commentForm2").validate({meta: "validation"});
+});
+</script>
+
+<style type="text/css">
+form { width: 500px; }
+form label { width: 250px; }
+form label.error, 
+form input.submit { margin-left: 253px; }
+</style>
+
+</head>
+<body>
+
+<div data-role="page" id="main">
+
+	<div data-role="header">
+		<h1 id="banner">jQuery Mobile Validation Demo</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+	
+		<!-- Custom messages with custom "meta" setting -->
+		<form class="cmxform" id="commentForm" method="post" action="">
+			<fieldset>
+				<legend>Please enter your email address</legend>
+				<p>
+
+					<label for="cemail">E-Mail *</label>
+					<input id="cemail" name="email" data-validate="{required:true, email:true, messages:{required:'Please enter your email address', email:'Please enter a valid email address'}}"/>
+				</p>
+				<p>
+					<input class="submit" type="submit" value="Submit"/>
+				</p>
+			</fieldset>
+		</form>
+
+		<form class="cmxform" id="commentForm2" method="post" action="">
+			<div data-role="fieldcontain">
+				<label for="library-add-name_1330096673102">Nazwa:</label>
+				<input type="text" name="library-add-name" id="library-add-name_1330096673102" value="" placeholder="Nazwa" onchange="tmpCurrentLibrary.name = this.value" data-validation="{required:true}" />
+			</div>
+			<div data-role="fieldcontain">
+				<label for="library-add-barcode_1330096673102">Kod kreskowy:</label>
+				<input type="text" name="library-add-barcode" id="library-add-barcode_1330096673102" value="" placeholder="Kod kreskowy" onchange="tmpCurrentLibrary.barcode = this.value" />
+			</div>
+			Walidacja URL nie dział przez ui-hide-label
+			<div data-role="fieldcontain" class="ui-hide-label">
+				<label for="library-add-opacLink_1330096673102">Link do OPAC:</label>
+				<input type="url" name="library-add-opacLink" id="library-add-opacLink_1330096673102" value="" placeholder="Link do OPAC" onchange="tmpCurrentLibrary.opacLink = this.value" data-validation="{required:true, url:true}" />
+			</div>
+			
+			<p>
+				<input class="submit" type="submit" value="Submit"/>
+			</p>
+		</form>
+
+	</div><!-- /content -->
+	
+</div><!-- /page -->
+
+</body>
+</html>
