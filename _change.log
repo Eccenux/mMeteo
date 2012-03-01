@@ -11,6 +11,10 @@
 # Favorite position loaded at startup?
 # PhoneGap app?
 
+== 0.3.1 ==
+# Minor additional cleanup.
+# Textarea support.
+
 == 0.3.0 ==
 # New I/O methods in storage (indirect data access).
 # Easier creation of new fields (_self.form).
