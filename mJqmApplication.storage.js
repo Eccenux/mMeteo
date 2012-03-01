@@ -15,6 +15,32 @@
 (function($, _self)
 {
 	/**
+		Schema
+		
+		Building i18n labels:
+		\li label-[objectFieldName]...-[objectFieldName]
+		\li label-[objectFieldName]...-[objectFieldName]-[optionName]
+		
+		Building field name/id:
+		\li [formName]-[objectFieldName]
+		
+		@note value for a field is the default value
+		
+		@warning you MUST at least provide type for each leaf schema object
+		
+		Types:
+		\li text - simple, short text
+		\li password - text that should not be visible when typing (re-entering advised or show/hide characters); should be encrypted
+		\li url - simple, short text
+		\li textarea - multi-line text
+		\li select - one of values in options array (for labels see above)
+		\li flip - flip switch yes/no select (true/false)
+		\li id - non-editable item identification value, should auto-increment on insert and MUST update (usualy increment) lastId of the container object
+		
+	*/
+	_self.storage.schema = {};
+
+	/**
 		data store (not to be accessed directly)
 		
 		@note Was _self.storage.data
@@ -439,31 +465,5 @@
 			}
 		}
 	};
-	
-	/**
-		Schema
-		
-		Building i18n labels:
-		\li label-[objectFieldName]...-[objectFieldName]
-		\li label-[objectFieldName]...-[objectFieldName]-[optionName]
-		
-		Building field name/id:
-		\li [formName]-[objectFieldName]
-		
-		@note value for a field is the default value
-		
-		@warning you MUST at least provide type for each leaf schema object
-		
-		Types:
-		\li text - simple, short text
-		\li password - text that should not be visible when typing (re-entering advised or show/hide characters); should be encrypted
-		\li url - simple, short text
-		\li textarea - multi-line text
-		\li select - one of values in options array (for labels see above)
-		\li flip - flip switch yes/no select (true/false)
-		\li id - non-editable item identification value, should auto-increment on insert and MUST update (usualy increment) lastId of the container object
-		
-	*/
-	_self.storage.schema = {};
 	
 })(jQuery, window.mJqmApplication);

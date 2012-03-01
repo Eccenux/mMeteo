@@ -170,7 +170,7 @@
 				\li What i18n keys should we use? (checkbox normaly should have lbl and title)
 		*/
 		// text and similar -> lbl
-		if ($.inArray(elType, ['text', 'email', 'url', 'date']) >= 0)
+		if ($.inArray(elType, ['text', 'email', 'url', 'date', 'textarea']) >= 0)
 		{
 			elementOptions.lbl = _self.i18n.get('label-'+labelBase+'-'+objectName);
 		}
