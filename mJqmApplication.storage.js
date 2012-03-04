@@ -424,7 +424,17 @@
 		var dataPart = _createObjectByPath (dataStore, objectPath);
 		
 		// copy and save
-		_propertiesXorCopy (data, dataPart);	//! @todo or should we validate data e.g. for interals type:"select"?
+		if (typeof(data) == 'object')
+		{
+			_propertiesXorCopy (data, dataPart);	//! @todo or should we validate data e.g. for interals type:"select"?
+		}
+		// this is for saving to leafs (which are not objects)
+		else
+		{
+			var parent = _getParentObjectByPath (dataStore, objectPath);
+			var childName = objectPath.replace(/.+\.(.+)/, '$1');
+			parent[childName] = data;
+		}
 		_self.storage.save ();
 	};
 	

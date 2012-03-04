@@ -2,18 +2,24 @@
 # Advanced settings:
 #* type of animation in transitions between pages
 #* type of footer/buttons: fixed to bottom*, below content, below header; *default, but don't work too good on all phones (browsers)
-# Other settings:
-#* get position: automatic*, only manual, save previous**; *position is acquired when the application is loaded, **default.
-#* skin
-#* Navigation buttons: icons&text | icons | text
+
 # Add some feedback when position is being acquired.
-# Saving favorite positions (would allow to get position without WiFi or GPS)?
-# Favorite position loaded at startup?
+
+# ?Favorite positions (would allow to load more then one position without WiFi or GPS)
+## Saving to favs (+name).
+## Loading most favorite position at startup.
+## List managment (delete, edit).
+
+#? skin (default=application native; other: a,b,c,d,e? colors? other names?)
+
 # PhoneGap app?
 
 == 0.3.1 ==
 # Minor additional cleanup.
 # Textarea support.
+# Other settings:
+#* Get position types: automatic*, only manual, save previous**; *position is acquired when the application is loaded, **default.
+#* Main navigation format: icons&text | icons | text
 
 == 0.3.0 ==
 # New I/O methods in storage (indirect data access).

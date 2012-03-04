@@ -33,6 +33,10 @@
 		[
 			_self.form.getElementOptions('language')
 			,
+			_self.form.getElementOptions('getPositionType')
+			,
+			_self.form.getElementOptions('mainNaviFormat')
+			,
 			{
 				type      : 'submit'
 				,name     : 'settings-submit'
@@ -91,8 +95,14 @@
 	{
 		_self.geo.initGet (function(pos)
 		{
-            $('#forecastform-lat').val(pos.coords.latitude);
-            $('#forecastform-lon').val(pos.coords.longitude);
+            $('#forecastform-lat')
+				.val(pos.coords.latitude)
+				.change()
+			;
+            $('#forecastform-lon')
+				.val(pos.coords.longitude)
+				.change()
+			;
 		});
 	};
 
@@ -115,7 +125,30 @@
 		
 		//
 		// Fill geolocation on load
-		_fillGeo();
+		var getPositionType = _self.storage.get('settings.getPositionType');
+		if (getPositionType == 'automatic')
+		{
+			_fillGeo();
+		}
+		
+		//
+		// Auto-save
+		if (getPositionType == 'manual-but-saved')
+		{
+			// setup saving
+			$('#forecastform-lat').change(function()
+			{
+				_self.storage.set('position.favorite.lat', $(this).val());
+			});
+			$('#forecastform-lon').change(function()
+			{
+				_self.storage.set('position.favorite.lon', $(this).val());
+			});
+			
+			// restore
+			$('#forecastform-lat').val(_self.storage.get('position.favorite.lat'));
+			$('#forecastform-lon').val(_self.storage.get('position.favorite.lon'));
+		}
 		
 		// refresh button(s)
 		$('.refresh-geo').click(function()

@@ -37,10 +37,6 @@
 	$(function()
 	{
 		//
-		// TEMP - setup fixed headers
-		//$('div[data-role="header"]').attr('data-position', 'fixed');
-		
-		//
 		// Setup i18nalized HTML
 		// hide all marked with language attribute and show thoose having current language
 		$('*[data-lang]').hide();
@@ -56,6 +52,26 @@
 			else
 			{
 				$(this).html(_self.i18n.get(key));
+			}
+		});
+
+		//
+		// Setup Main Navigation Format
+		// @note MUST be done after i18n keys setup (because they insert HTML)
+		// 'icons&text', 'icons-only', 'text-only'
+		$('*[data-id|="main-navi"]').each(function()
+		{
+			var naviFormat = _self.storage.get('settings.mainNaviFormat');
+			if (naviFormat == 'icons-only')
+			{
+				$('a[data-icon]', this)
+					.attr('data-iconpos', 'notext')
+					.html('')
+				;
+			}
+			else if (naviFormat == 'text-only')
+			{
+				$('a[data-icon]', this).removeAttr('data-icon');
 			}
 		});
 		
