@@ -30,7 +30,7 @@
 	//
  	$.extend($.validator.messages, _self.i18n.get("validator-messages"));
 	$.metadata.setType('html5');
-	
+
 	//
 	// Onready, general setup
 	//
@@ -74,6 +74,29 @@
 				$('a[data-icon]', this).removeAttr('data-icon');
 			}
 		});
+
+		//
+		// Setup Main Navigation Position
+		//
+		switch (_self.storage.get('settings.mainNaviPosition'))
+		{
+			default:
+			case 'bottom-fixed':
+				// should already be OK.
+			break;
+			case 'below-content':
+				$('*[data-id|="main-navi"]').each(function()
+				{
+					$(this).attr('data-position', 'below-content');
+				});
+			break;
+			case 'below-header':
+				$('*[data-id|="main-navi"]').each(function()
+				{
+					$(this).attr('data-position', 'below-header');
+				});
+			break;
+		}
 		
 		//
 		// Main page must be set-up when no hash or just hash is given
@@ -99,12 +122,15 @@
 		}
 		
 		// animation on page change
-		$.mobile.defaultPageTransition = "none";		// none for performance
+		$.mobile.defaultPageTransition = _self.storage.get('settings.pageTransitions');
 		//$.mobile.fallbackTransition.slideout = "none";	// transition for non-3D animation enabled browser
 		
 		// footer fixation (not working: about -> tap on the page -> open sub-collapsed section)
-		$.mobile.touchOverflowEnabled = true;
-		$.mobile.fixedToolbars.setTouchToggleEnabled(false);
+		if (_self.storage.get('settings.mainNaviPosition') == 'bottom-fixed')
+		{
+			$.mobile.touchOverflowEnabled = true;
+			$.mobile.fixedToolbars.setTouchToggleEnabled(false);
+		}
 	});
 	
 	//

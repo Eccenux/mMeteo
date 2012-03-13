@@ -109,6 +109,106 @@
 	{
 		_schemaPart = _dataPart = _baseObjectName = _isCreatorAlreadyStarted = _isItemArray = null;
 	};
+
+	/**
+		Start a form elements group
+		
+		The object is filled based on previously set \a baseObjectName
+		
+		@param groupName Is a name of the group (used for i18n purposes)
+		@param options An options object that can have one of the following properties set:
+			{
+				'collapsed'     : false,	// is to be collapsed by default
+				'theme'         : 'd',		// jQuery mobile color theme to be used for header
+				'contentTheme'  : 'd'		// jQuery mobile color theme to be used for content (and frame)
+			}
+		
+		@todo
+			All of the below should work for _schemaPart[objectName].type = 'select'
+			Add other types...
+	*/
+	_self.form.startGroup = function (groupName, options)
+	{
+		// std check
+		if (!_isCreatorAlreadyStarted)
+		{
+			alert(_self.i18n.get('you must init form creator first'));
+		}
+		
+		// prepare options
+		var options = $.extend({
+		  'collapsed'     : false,
+		  'theme'         : 'd',
+		  'contentTheme'  : 'd'
+		}, options);
+		options.collapsed = (!options.collapsed) ? 'false' : 'true';
+		
+		// group name to label form
+		var i18nLabel = _baseObjectName.replace(/\./g, '-');
+		i18nLabel = 'group-'+ i18nLabel +'-'+ groupName;
+
+		// done
+		return {
+			type      : 'rawHTML'
+			,value    : ''
+				+'<div data-role="collapsible"'
+					+' data-collapsed="'+options.collapsed+'"'
+					+' data-theme="'+options.theme+'"'
+					+' data-content-theme="'+options.contentTheme+'"'
+					+'>'
+					+'<h3>'+_self.i18n.get(i18nLabel)+'</h3>'
+					+'<div>'
+		};
+	}
+	/**
+		End group previously started by .form.startGroup
+	*/
+	_self.form.endGroup = function ()
+	{
+		// std check
+		if (!_isCreatorAlreadyStarted)
+		{
+			alert(_self.i18n.get('you must init form creator first'));
+		}
+		
+		return {
+			type      : 'rawHTML'
+			,value    : '</div></div>'
+		};
+	}
+	
+	/**
+		Start a set of groups (collapsed together)
+	*/
+	_self.form.startSet = function ()
+	{
+		// std check
+		if (!_isCreatorAlreadyStarted)
+		{
+			alert(_self.i18n.get('you must init form creator first'));
+		}
+		
+		return {
+			type      : 'rawHTML'
+			,value    : '<div data-role="collapsible-set">'
+		};
+	}
+	/**
+		End group previously started by .form.endSet
+	*/
+	_self.form.endSet = function ()
+	{
+		// std check
+		if (!_isCreatorAlreadyStarted)
+		{
+			alert(_self.i18n.get('you must init form creator first'));
+		}
+		
+		return {
+			type      : 'rawHTML'
+			,value    : '</div>'
+		};
+	}
 	
 	/**
 		Create options object for given \a objectName
@@ -130,6 +230,7 @@
 	*/
 	_self.form.getElementOptions = function (objectName)
 	{
+		// std check
 		if (!_isCreatorAlreadyStarted)
 		{
 			alert(_self.i18n.get('you must init form creator first'));

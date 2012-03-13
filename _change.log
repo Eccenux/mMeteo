@@ -1,7 +1,7 @@
+== in the making ==
+...
+
 == planned ==
-# Advanced settings:
-#* type of animation in transitions between pages
-#* type of footer/buttons: fixed to bottom*, below content, below header; *default, but don't work too good on all phones (browsers)
 
 # Add some feedback when position is being acquired.
 
@@ -13,6 +13,12 @@
 #? skin (default=application native; other: a,b,c,d,e? colors? other names?)
 
 # PhoneGap app?
+
+== 0.4.0 ==
+# New settings:
+#* type of animation in transitions between pages
+#* type of footer/buttons: fixed to bottom*, below content, below header; *default, but don't work too good on all phones (browsers)
+# Settings groups
 
 == 0.3.1 ==
 # Minor additional cleanup.

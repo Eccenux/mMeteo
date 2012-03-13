@@ -31,11 +31,27 @@
 		// get HTML
 		var formData = formCreator (
 		[
-			_self.form.getElementOptions('language')
-			,
 			_self.form.getElementOptions('getPositionType')
 			,
-			_self.form.getElementOptions('mainNaviFormat')
+			_self.form.getElementOptions('language')
+			,
+			_self.form.startSet()
+				,
+				_self.form.startGroup('mainNavi', {collapsed:true})
+					,
+					_self.form.getElementOptions('mainNaviFormat')
+					,
+					_self.form.getElementOptions('mainNaviPosition')
+				,
+				_self.form.endGroup()
+				,
+				_self.form.startGroup('advanced', {collapsed:true})
+					,
+					_self.form.getElementOptions('pageTransitions')
+				,
+				_self.form.endGroup()
+			,
+			_self.form.endSet()
 			,
 			{
 				type      : 'submit'
