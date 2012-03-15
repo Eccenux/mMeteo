@@ -56,8 +56,10 @@
 	<script type="text/javascript" src="./mJqmApplication.forms.js"></script>
 	
 	<!-- meteo.pl -->
+	<!--
 	<script type="text/javascript" src="http://www.meteo.pl/meteorogram_um_js.php"></script>
 	<script type="text/javascript" src="http://www.meteo.pl/meteorogram_coamps_js.php"></script>
+	-->
 
 	<!-- jQuery mobile (must be here for mobile...options to work) -->
 	<script type="text/javascript" src="lib/jquery.mobile.multifooter.js"></script>
@@ -87,7 +89,9 @@
 				<p><label for="forecastform-lon" data-i18n-key="label-longitude">E</label> <input type="text" id="forecastform-lon" name="EALL"></p>
 			</fieldset>
 			<input type="hidden" name="lang" value="pl" />
+			<!--
 			<input type="hidden" name="fdate" id="forecastform-date" value="" />
+			-->
 			<div class="buttons ui-grid-a">
 				<div class="ui-block-a">
 					<input type="submit" data-i18n-key="title-um-model" value="Model UM" id="submitUM" onclick="$('#forecastform').attr('data-model','um')">

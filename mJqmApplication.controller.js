@@ -203,6 +203,7 @@
 			
 			// switch between two forms
 			var modelChoosen = $('#forecastform').attr('data-model');	// this was set onclick
+			/*
 			if (modelChoosen == 'um')
 			{
 				if (typeof(UM_FULLDATE) != 'undefined')		// UM_FULLDATE is from http://www.meteo.pl/meteorogram_um_js.php
@@ -217,6 +218,7 @@
 					$('#forecastform-date').val(COAMPS_FULLDATE);
 				}
 			}
+			*/
 			// setup action
 			var actionUrl = $('#forecastform').attr('data-action-'+modelChoosen);
 			if (actionUrl)

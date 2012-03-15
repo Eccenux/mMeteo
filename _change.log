@@ -14,6 +14,9 @@
 
 # PhoneGap app?
 
+== 0.4.1 ==
+# Pre-connection to meteo.pl not needed - removed date from request form.
+
 == 0.4.0 ==
 # New settings:
 #* type of animation in transitions between pages
