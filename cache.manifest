@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# application version 0.5.0
+# application version 0.5.1
 CACHE:
 index.html
 
@@ -7,15 +7,17 @@ logo/logo.ico
 
 # jQuery Mobile Application files
 mJqmApplication.css
-mJqmApplication.base.js
-mJqmApplication.controller.js
-mJqmApplication.i18n.js
-mJqmApplication.model.js
-mJqmApplication.setup.js
-mJqmApplication.storage.js
-mJqmApplication.forms.js
-mJqmApplication.utils.js
-mJqmApplication.utils.geo.js
+
+mJqmApp.mini.js
+#mJqmApplication.base.js
+#mJqmApplication.controller.js
+#mJqmApplication.i18n.js
+#mJqmApplication.model.js
+#mJqmApplication.setup.js
+#mJqmApplication.storage.js
+#mJqmApplication.forms.js
+#mJqmApplication.utils.js
+#mJqmApplication.utils.geo.js
 
 # jQuery and jQuery mobile
 lib/base/jquery-min.js
@@ -28,13 +30,15 @@ lib/base/jquery.mobile-min.css
 lib/base/jquery.mobile-min.js
 
 # jQuery Mobile Application extra libraries
-lib/jquery.store.js
-lib/jquery.metadata.js
-lib/jquery.validate.js
-lib/jquery.mobile.multifooter.js
 lib/json2.js
-lib/form_cr.js
-lib/I18n.js
+lib/jquery.mobile.multifooter.js
+
+lib/libs.comb.js
+#lib/jquery.store.js
+#lib/jquery.metadata.js
+#lib/jquery.validate.js
+#lib/form_cr.js
+#lib/I18n.js
 
 NETWORK:
 http://www.meteo.pl/

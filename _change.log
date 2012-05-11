@@ -14,8 +14,9 @@
 
 # PhoneGap app?
 
-== 0.5.0 ==
+== 0.5.0 + 0.5.1 ==
 # Packaging JS with PHP.
+# Removed from cache.
 
 == 0.4.2 ==
 # Mini-map preview (from Google).
