@@ -14,6 +14,10 @@
 
 # PhoneGap app?
 
+== 0.4.2 ==
+# Mini-map preview (from Google).
+# Version in title.
+
 == 0.4.1 ==
 # Pre-connection to meteo.pl not needed - removed date from request form.
 

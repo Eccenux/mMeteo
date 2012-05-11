@@ -16,7 +16,7 @@
 -->
 <html>
 <head>
-    <title>mMeteo</title>
+    <title>mMeteo 0.4.2.5</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
 	<meta charset="UTF-8">
@@ -101,6 +101,8 @@
 				</div>
 			</div>
 			<input type="button" data-i18n-key="button-refresh" data-icon="refresh" value="Odśwież położenie" class="refresh-geo">
+			<input type="button" data-i18n-key="button-show-map" value="Pokaż położenie (mapa)" onclick="mJqmApplication.geo.loadMap($('#forecastform-lat').val(), $('#forecastform-lon').val(), $('#map-preview')[0])">
+			<div id="map-preview"></div>
 		</form>
 	</div><!-- /content -->
 

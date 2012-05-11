@@ -38,6 +38,9 @@ window.mJqmApplication.i18n = {"":""
 		// geo errors
 		,"could not detect your position"     : "Nie udało się wykryć położenia. Włącz sieć bezprzewodową (WiFi) lub odbiornik GPS."
 		,"retrieving your position timed out" : "Nie udało się wykryć położenia w rozsądnym czasie. Spróbuj jeszcze raz."
+		// map
+		,"button-show-map" : "Pokaż położenie (mini-mapa)"
+		,"map" : "mapa"
 		// other errors
 		,"error: position empty"           : "Błąd! Współrzędne położenia są puste.\n\nOdśwież położenie lub wpisz długość i szerokość ręcznie."
 		,"error: position must be decimal" : "Błąd! Współrzędne położenia są nieprawidłowe. Długość i szerokość muszą być wpisane w formie liczb dziesiętnych.\n\nPopraw lub spróbuj odświeżyć położenie."
@@ -109,6 +112,9 @@ window.mJqmApplication.i18n = {"":""
 		,"add - title" : "Add"
 		,"edit - title" : "Edit"
 		,"delete - title" : "Delete"
+		// map
+		,"button-show-map" : "Show position (mini-map)"
+		,"map" : "map"
 		// geo errors
 		,"could not detect your position"     : "Could not detect your position. Turn on your wireless network (WiFi) or GPS."
 		,"retrieving your position timed out" : "Retrieving your position timed out. You can try again."
