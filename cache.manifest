@@ -41,4 +41,5 @@ lib/libs.comb.js
 #lib/I18n.js
 
 NETWORK:
-http://www.meteo.pl/
+#http://www.meteo.pl/
+*
