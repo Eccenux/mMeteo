@@ -15,6 +15,11 @@
 (function($, _self)
 {
 	/**
+		Storage key (similar to database name) for this app.
+	*/
+	_self.storage.storageKey = 'mMeteoData';
+	
+	/**
 		Schema
 		
 		@see mJqmApplication.storage.js

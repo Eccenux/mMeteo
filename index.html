@@ -16,7 +16,7 @@
 -->
 <html manifest="cache.manifest">
 <head>
-    <title>mMeteo 0.5.1c</title>
+    <title>mMeteo 0.5.2c</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
 	<meta charset="UTF-8">
@@ -38,27 +38,16 @@
 
 	<!-- jQuery and other libs -->
 	<script type="text/javascript" src="lib/libs.comb.js"></script>
-	<!--
-	<script type="text/javascript" src="lib/jquery.store.js"></script>
-	<script type="text/javascript" src="lib/jquery.metadata.js"></script>
-	<script type="text/javascript" src="lib/jquery.validate.js"></script>
-	<script type="text/javascript" src="lib/form_cr.js"></script>
-	<script type="text/javascript" src="lib/I18n.js"></script>
-	-->
 
 	<!-- this gadget -->
 	<link rel="stylesheet" href="./mJqmApplication.css">
 	<script type="text/javascript" src="./mJqmApp.mini.js"></script>
 	<!--
-	<script type="text/javascript" src="./mJqmApplication.base.js"></script>
-	<script type="text/javascript" src="./mJqmApplication.utils.js"></script>
-	<script type="text/javascript" src="./mJqmApplication.utils.geo.js"></script>
-	<script type="text/javascript" src="./mJqmApplication.i18n.js"></script>
-	<script type="text/javascript" src="./mJqmApplication.storage.js"></script>
-	<script type="text/javascript" src="./mJqmApplication.model.js"></script>
+	For quick testing just uncomment below and comment the line that includes this script in _packaging.php
 	<script type="text/javascript" src="./mJqmApplication.controller.js"></script>
-	<script type="text/javascript" src="./mJqmApplication.setup.js"></script>
-	<script type="text/javascript" src="./mJqmApplication.forms.js"></script>
+	
+	Note! Some scripts/modules (e.g. i18n, model) must be run before setup module.
+	This is why (for testing) you also might need to include setup after other scripts (and remove it from _packaging.php).
 	-->
 	
 	<!-- meteo.pl -->
@@ -79,7 +68,7 @@
 <div data-role="page" id="page-start">
 
 	<div data-role="header">
-		<h1 data-i18n-key="title-forecast">Prognoza</h1>
+		<h1 data-i18n-key="title-application" style="display:none">&nbsp;</h1>
 	</div><!-- /header -->
 
 	<div data-role="content">
@@ -115,14 +104,14 @@
 </div><!-- /page -->
 
 <!--
-	About page
+	About/help page
 -->	
 <div data-role="page" id="page-about">
 
 	<div data-role="header">
 		<h1>
-			<span data-lang="en">About</span>
-			<span data-lang="pl">O programie</span>
+			<span data-lang="en">Help</span>
+			<span data-lang="pl">Pomoc</span>
 		</h1>
 	</div><!-- /header -->
 
@@ -275,7 +264,7 @@
 				<span data-lang="pl">Powrót</span>
 			</a></li>
 			-->
-			<li><a href="#page-start" data-icon="home" data-i18n-key="title-forecast">Prognoza</a></li>
+			<li><a href="#page-start" data-icon="home" data-i18n-key="title-application">&nbsp;</a></li>
 			<li><a href="#page-settings" data-icon="gear">
 				<span data-lang="pl">Ustawienia</span>
 				<span data-lang="en">Settings</span>

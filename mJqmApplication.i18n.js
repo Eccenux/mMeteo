@@ -29,6 +29,8 @@
 window.mJqmApplication.i18n = {"":""
 	// Polski
 	,'pl' : {"":""
+		// app basic
+		,"title-application" : "Prognoza"
 		// errors
 		,"unexpected error" : "Niespodziewany błąd!"
 		// page (or icon) titles
@@ -45,7 +47,6 @@ window.mJqmApplication.i18n = {"":""
 		,"error: position empty"           : "Błąd! Współrzędne położenia są puste.\n\nOdśwież położenie lub wpisz długość i szerokość ręcznie."
 		,"error: position must be decimal" : "Błąd! Współrzędne położenia są nieprawidłowe. Długość i szerokość muszą być wpisane w formie liczb dziesiętnych.\n\nPopraw lub spróbuj odświeżyć położenie."
 		// meteo forms
-		,"title-forecast" : "Prognoza"
 		,"title-um-model" : "Krótka prognoza"
 		,"title-coamps-model" : "Długa prognoza"
 		,"label-latitude"  : "Szerokość (N)"
@@ -106,6 +107,8 @@ window.mJqmApplication.i18n = {"":""
 	}
 	// English
 	,'en' : {"":""
+		// app basic
+		,"title-application" : "Forecast"
 		// errors
 		,"unexpected error" : "Unexpected error!"
 		// page (or icon) titles
@@ -122,7 +125,6 @@ window.mJqmApplication.i18n = {"":""
 		,"error: position empty"           : "Error! Geo. position is empty.\n\nPlease refresh position or type in latitude and longitude yourself."
 		,"error: position must be decimal" : "Error! Geo. position is incorrect. Latitude and longitude must be decimal.\n\nCorrect thoose values or try to refresh the position."
 		// meteo forms
-		,"title-forecast" : "Forecast"
 		,"title-um-model" : "Short forecast"
 		,"title-coamps-model" : "Long forecast"
 		,"label-latitude"  : "Latitude (N)"

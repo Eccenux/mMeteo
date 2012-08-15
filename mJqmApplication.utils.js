@@ -100,5 +100,34 @@
 			return $.extend(true, {}, source);
 		}
 	};
+
+	/**
+		Bind input to a storage value
+		
+		@note
+			SHOULD be run in a controller or whenever the input is available
+			(don't have to be visible though).
+			Second call only restores the value.
+		
+		@param selector jQuery selector of input element
+		@param storagePath Path for _self.storage.get/set
+	*/
+	_self.bindInput = function(selector, storagePath)
+	{
+		// setup saving (only once)
+		var bindIndicator = 'data-jqm-bind-' + storagePath;
+		if ($(selector).attr(bindIndicator) != 'true')
+		{
+			$(selector).attr(bindIndicator, 'true');
+			
+			$(selector).change(function()
+			{
+				_self.storage.set(storagePath, $(this).val());
+			});
+		}
+		
+		// restore
+		$(selector).val(_self.storage.get(storagePath));
+	};
 	
 })(jQuery, window.mJqmApplication);

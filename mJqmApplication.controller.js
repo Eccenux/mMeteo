@@ -104,6 +104,8 @@
 		;
 	};
 	
+	var _currentGeoSelectorPrefix = '#forecastform-';
+
 	/**
 		(re)Fill geolocation info
 	*/
@@ -111,11 +113,11 @@
 	{
 		_self.geo.initGet (function(pos)
 		{
-            $('#forecastform-lat')
+			$(_currentGeoSelectorPrefix + 'lat')
 				.val(pos.coords.latitude)
 				.change()
 			;
-            $('#forecastform-lon')
+			$(_currentGeoSelectorPrefix + 'lon')
 				.val(pos.coords.longitude)
 				.change()
 			;
@@ -151,22 +153,12 @@
 		// Auto-save
 		if (getPositionType == 'manual-but-saved')
 		{
-			// setup saving
-			$('#forecastform-lat').change(function()
-			{
-				_self.storage.set('position.favorite.lat', $(this).val());
-			});
-			$('#forecastform-lon').change(function()
-			{
-				_self.storage.set('position.favorite.lon', $(this).val());
-			});
-			
-			// restore
-			$('#forecastform-lat').val(_self.storage.get('position.favorite.lat'));
-			$('#forecastform-lon').val(_self.storage.get('position.favorite.lon'));
+			_self.bindInput(_currentGeoSelectorPrefix + 'lat', 'position.favorite.lat');
+			_self.bindInput(_currentGeoSelectorPrefix + 'lon', 'position.favorite.lon');
 		}
 		
-		// refresh button(s)
+		//
+		// Refresh button(s)
 		$('.refresh-geo').click(function()
 		{
 			_fillGeo();
@@ -177,11 +169,11 @@
 		$('#forecastform').submit(function()
 		{
 			// auto-fix values
-			var ll = { lat: $('#forecastform-lat').val(), lon: $('#forecastform-lon').val() };
+			var ll = { lat: $(_currentGeoSelectorPrefix + 'lat').val(), lon: $(_currentGeoSelectorPrefix + 'lon').val() };
 			ll.lat = ll.lat.replace(/,/, '.');
 			ll.lon = ll.lon.replace(/,/, '.');
-			$('#forecastform-lat').val(ll.lat);
-			$('#forecastform-lon').val(ll.lon);
+			$(_currentGeoSelectorPrefix + 'lat').val(ll.lat);
+			$(_currentGeoSelectorPrefix + 'lon').val(ll.lon);
 
 			// validate values
 			var info = "";

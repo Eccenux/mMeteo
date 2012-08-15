@@ -1,6 +1,6 @@
 <?php
 /**
-	Simple JS loader
+	Simple JS loader/packer
 */
 class ecSimpleJSLoader
 {
@@ -15,7 +15,7 @@ class ecSimpleJSLoader
 	// minification options
 	var $isRemoveInlineComments = true;
 	var $isRemoveMultiComments = true;
-	var $isLeaveMultiCommentsWithCopyright = true;
+	var $isPreserveMultiCommentsWithCopyright = true;
 
 	function __construct($strBaseScriptDir)
 	{
@@ -147,7 +147,7 @@ class ecSimpleJSLoader
 		if (preg_match_all($reMulti, $strCode, $arrMatches, PREG_OFFSET_CAPTURE))
 		{
 			// remove comments with copyright from the list
-			if (!$this->isLeaveMultiCommentsWithCopyright)
+			if ($this->isPreserveMultiCommentsWithCopyright)
 			{
 				foreach ($arrMatches[0] as $i=>$v)
 				{

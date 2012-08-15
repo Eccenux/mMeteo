@@ -24,9 +24,9 @@
 		Building field name/id:
 		\li [formName]-[objectFieldName]
 		
-		@note value for a field is the default value
+		@note Value for a field is the default value.
 		
-		@warning you MUST at least provide type for each leaf schema object
+		@warning You MUST at least provide type for each leaf schema object.
 		
 		Types:
 		\li text - simple, short text
@@ -37,6 +37,62 @@
 		\li flip - flip switch yes/no select (true/false)
 		\li id - non-editable item identification value, should auto-increment on insert and MUST update (usualy increment) lastId of the container object
 		
+		<h2>Examples</h2>
+		
+		<h3>Simple object</h3>
+		_self.storage.schema = {
+			favoriteLocation :
+			{
+				name       : {type:"text", value:""}
+				,latitude  : {type:"text", value:""}
+				,longitude : {type:"text", value:""}
+			}
+		};
+		
+		<h3>Items - basic example</h3>
+		<p>If you would like to have more items with the same fields you define `items` as an array of objects:</p>
+		<pre>
+		_self.storage.schema = {
+			locations :
+			{
+				items :
+				[
+					{
+						name       : {type:"text", value:""}
+						,latitude  : {type:"text", value:""}
+						,longitude : {type:"text", value:""}
+						,isFavorite : {type:"flip", value:false}
+					}
+				]
+			}
+		};
+		</pre>
+		<p>Notice that instead of having `favoriteLocation` we now use `isFavorite` property.</p>
+		
+		@note For adding new items see next example or {@link #getNewItem()}.
+		
+		<h3>Items - extra framework elements</h3>
+		<p>The framework will add `lastId` property to your main object (in this case `locations`) upon using `getNewItem`.
+		It will also add `id` to each item.</p>
+		
+		<p>For clarity you should include those in your schema like this:</p>
+		<pre>
+		_self.storage.schema = {
+			locations :
+			{
+				lastId  : 0
+				, items :
+				[
+					{
+						id         : {type:"id"}
+						,name      : {type:"text", value:""}
+						,latitude  : {type:"text", value:""}
+						,longitude : {type:"text", value:""}
+					}
+				]
+			}
+		};
+		</pre>
 	*/
 	_self.storage.schema = {};
 
@@ -49,9 +105,15 @@
 	
 	/**
 		Init
+		
+		@throws Error When storageKey was not defined. 
 	*/
 	_self.storage.init = function ()
 	{
+		if (_self.storage.storageKey == null)
+		{
+			throw new Error('Fatal error: storageKey not defined. Make sure it is defined before setup.');
+		}
 		$.storage = new $.store(); 
 		var data = $.storage.get (_self.storage.storageKey);
 		if (data)	// not null and not undefined
