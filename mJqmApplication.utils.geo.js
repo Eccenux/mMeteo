@@ -66,7 +66,10 @@
 		// show
 		else
 		{
-			var url = 'http://maps.googleapis.com/staticmap?center=%%lat%%,%%lon%%&markers=%%lat%%,%%lon%%&maptype=mobile&sensor=false&zoom=15&size=200x200&key=AIzaSyDgIGdkNTcSSJO-NXGyVtoRoBNDvZdy4S8';
+			//var url = 'http://maps.googleapis.com/staticmap?center=%%lat%%,%%lon%%&markers=%%lat%%,%%lon%%&maptype=mobile&sensor=false&zoom=2&size=200x200&key=AIzaSyDgIGdkNTcSSJO-NXGyVtoRoBNDvZdy4S8';
+			//var url = 'http://maps.google.com/staticmap?center=%%lat%%,%%lon%%&markers=%%lat%%,%%lon%%&maptype=mobile&sensor=false&zoom=15&size=200x200';
+			var url = 'http://maps.google.com/maps/api/staticmap?center=%%lat%%,%%lon%%&markers=%%lat%%,%%lon%%&maptype=mobile&sensor=false&zoom=10&size=200x200';
+			
 			url = url
 				.replace(/%%lat%%/g, ll.lat)
 				.replace(/%%lon%%/g, ll.lon)
