@@ -1,0 +1,18 @@
+CACHE MANIFEST
+# application version 0.6.1
+CACHE:
+index.html
+
+# JS
+package.app.js
+package.jqm.js
+package.libs.js
+package.mj.js
+
+# CSS + required images
+css/package.css
+css/images/ajax-loader.gif
+
+NETWORK:
+#http://www.meteo.pl/
+*

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+	xmlns:gap = "http://phonegap.com/ns/1.0"
+	id        = "pl.enux.mmeteo"
+	versionCode="00601"
+	version   = "0.6.1">
+	<!--
+		versionCode = Mmmbb : Major.minor.build
+	-->
+	
+    <name>mJappis example</name>
+
+    <description>
+        This is just an example.
+    </description>
+
+    <author href="http://www.mjappis.org" email="eccenux+mjex@gmail.com">
+        Maciej Nux Jaros
+    </author>
+
+	<!-- Mobile OS to be build -->
+	<gap:platform name="ios" />
+	<gap:platform name="android" />
+
+	<!-- PG version -->
+	<preference name="phonegap-version" value="3.1.0" />
+
+	<!-- InAppBrowser -->
+	<gap:plugin name="org.apache.cordova.inappbrowser" />
+	<preference name="EnableViewportScale" value="true" />
+	
+	<!-- icons -->
+	<icon src="logo/logo128.png" default="true" />
+	<icon src="logo/logo036.png" width="36"  height="36"/>
+	<icon src="logo/logo048.png" width="48"  height="48"/>
+	<icon src="logo/logo057.png" width="57"  height="57"/>
+	<icon src="logo/logo072.png" width="72"  height="72"/>
+	<icon src="logo/logo080.png" width="80"  height="80"/>
+	<icon src="logo/logo114.png" width="114" height="114"/>
+
+	<!--
+		Permissions.
+		
+		We don't really need specific permissions,
+		but PGB will add some from plugins.
+	-->
+	<preference name="permissions" value="none"/>
+	
+	<!-- Cross domain AJAX access; * to any domain -->
+	<access origin="*" />
+</widget>

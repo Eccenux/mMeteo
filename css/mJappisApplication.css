@@ -1,0 +1,144 @@
+/**
+	@file mJappisApplication main CSS file
+
+    Copyright:  ©2012-2013 Maciej "Nux" Jaros
+	  License:  CC-BY-SA
+	            http://creativecommons.org/licenses/by-sa/3.0/
+*/
+
+/* validation */
+.ui-hide-label label.error
+{
+	clip: auto;
+	left: 0;
+	position: relative !important;
+	display: block;
+}
+
+/* binding */
+a[data-binding-transform="urlToShortText"] small
+{
+	opacity: .5;	/* not working in IE8 and below - if you care */
+}
+
+/* list view extra
+	* disabled link item
+ * ----------------------------------------------------- */
+ul[data-role=listview] a.disabled {
+	color:#ccc;
+}
+
+/* codeScanner input
+ * ----------------------------------------------------- */
+/* hide +/- buttons in Chrome */
+.ui-input-codeScanner input[type=number]::-webkit-inner-spin-button,
+.ui-input-codeScanner input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* box
+	<div class="ui-box ui-corner-all ui-body-a">
+		<h3 class="ui-bar-a">...</h3>
+		<div>
+			...
+		</div>
+	</div>
+
+	Just content (no header):
+	<div class="ui-box-alone ui-corner-all ui-body-a">
+		...
+	</div>
+*/
+.ui-box > h2,
+.ui-box > h3 {
+	text-align: center;
+	margin: 0;
+	padding: .5em;
+	font-size: 110%;
+	border-style: none none solid none;
+}
+.ui-box > div {
+	margin: 1em;
+}
+.ui-box > div {
+	margin: 1em;
+}
+.ui-box-alone {
+	padding: .5em 1em;
+}
+.ui-box > h3 {
+	position:relative;
+}
+.ui-box > h3 .ui-btn-icon-notext {
+	right:0; top:0;
+	position: absolute;
+	padding:0;
+	margin:.3em;
+}
+
+/* search/text + button
+	<div data-role="controlgroup" data-type="horizontal" class="controlgroup-full">
+		<input type="search" name="query" value="" data-i18n-key-attribute="search-label:placeholder"
+			   data-wrapper-class="controlgroup-textinput" />
+		<input type="button" name="search" value="" data-i18n-key-attribute="search-action:value" />
+	</div>
+
+	With text + 2 buttons
+	<div data-role="controlgroup" data-type="horizontal" class="controlgroup-full-2">
+		<input type="search" name="query" value="" data-i18n-key-attribute="search-label:placeholder"
+			   data-wrapper-class="controlgroup-textinput" />
+		<input type="button" name="search" value="" data-i18n-key-attribute="search-action:value" />
+		<a href="#page-searchOptions"
+		   data-role="button" data-rel="dialog" data-transition="pop" data-i18n-key="Options">&nbsp;</a>
+	</div>
+
+	@note You might want to surround controlgroup with the ui-box (or add classes to controlgroup).
+*/
+.controlgroup-textinput {
+	padding-top:.22em;
+	padding-bottom:.22em;
+	float: left;
+	margin: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.196);
+	-webkit-border-radius: .3125em 0 0 .3125em;
+	        border-radius: .3125em 0 0 .3125em;
+}
+.ui-input-search.controlgroup-textinput .ui-input-clear {
+	padding:.22em;
+}
+[class*=controlgroup-full] .ui-controlgroup-controls
+{
+	width:100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+	padding: .5em 0;
+}
+[class*=controlgroup-full] .ui-controlgroup-controls > .ui-btn
+{
+	width:25%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.controlgroup-full .controlgroup-textinput {
+	width:75%;
+}
+.controlgroup-full-2 .controlgroup-textinput {
+	width:50%;
+}
+
+/* use in container to clear inner floating elements  */
+.clear-inside:after {
+	content: " ";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+

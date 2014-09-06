@@ -1,0 +1,40 @@
+<!--
+	Main page = start page
+-->	
+<div data-role="page" id="page-start">
+
+	<div data-role="header">
+		<h1 data-i18n-key="title-application" style="display:none">&nbsp;</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<form
+			method="GET" target="mMeteoFrame" id="forecastform"
+			action="http://www.meteo.pl/um/php/mgram_search.php" 
+			data-action-um="http://www.meteo.pl/um/php/mgram_search.php" 
+			data-action-coamps="http://www.meteo.pl/php/mgram_search.php" 
+			data-model="um" 
+		>
+			<fieldset data-role="fieldcontain" data-mini="true">
+				<p><label for="forecastform-lat" data-i18n-key="label-latitude" >N</label> <input type="text" id="forecastform-lat" name="NALL"></p>
+				<p><label for="forecastform-lon" data-i18n-key="label-longitude">E</label> <input type="text" id="forecastform-lon" name="EALL"></p>
+			</fieldset>
+			<input type="hidden" name="lang" value="pl" />
+			<!--
+			<input type="hidden" name="fdate" id="forecastform-date" value="" />
+			-->
+			<div class="buttons ui-grid-a">
+				<div class="ui-block-a">
+					<input type="submit" data-i18n-key="title-um-model" value="Model UM" id="submitUM" onclick="$('#forecastform').attr('data-model','um')">
+				</div>
+				<div class="ui-block-b">
+					<input type="submit" data-i18n-key="title-coamps-model" value="Model COAMPS" id="submitCOAMPS" onclick="$('#forecastform').attr('data-model','coamps')">
+				</div>
+			</div>
+			<input type="button" data-i18n-key="button-refresh" data-icon="refresh" value="Odśwież położenie" class="refresh-geo">
+			<input type="button" data-i18n-key="button-show-map" value="Pokaż położenie (mapa)" id="show-map-button">
+			<div id="map-preview"></div>
+		</form>
+	</div><!-- /content -->
+
+</div><!-- /page -->

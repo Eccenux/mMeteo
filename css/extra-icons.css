@@ -1,0 +1,31 @@
+/* svg-white */
+.ui-icon-book:after {background-image: url("images/extra/book-white.svg")}
+.ui-icon-scanner:after {background-image: url("images/extra/scanner-white.svg")}
+.ui-icon-stack:after {background-image: url("images/extra/stack-white.svg")}
+.ui-icon-facebook:after {background-image: url("images/extra/facebook-white.svg")}
+.ui-icon-google-plus:after {background-image: url("images/extra/google-plus-white.svg")}
+.ui-icon-twitter:after {background-image: url("images/extra/twitter-white.svg")}
+
+/* png-white */
+.ui-nosvg .ui-icon-book:after {background-image: url("images/extra/png/book-white.png")}
+.ui-nosvg .ui-icon-scanner:after {background-image: url("images/extra/png/scanner-white.png")}
+.ui-nosvg .ui-icon-stack:after {background-image: url("images/extra/png/stack-white.png")}
+.ui-nosvg .ui-icon-facebook:after {background-image: url("images/extra/png/facebook-white.png")}
+.ui-nosvg .ui-icon-google-plus:after {background-image: url("images/extra/png/google-plus-white.png")}
+.ui-nosvg .ui-icon-twitter:after {background-image: url("images/extra/png/twitter-white.png")}
+
+/* svg-black */
+.ui-alt-icon.ui-icon-book:after,.ui-alt-icon .ui-icon-book:after {background-image: url("images/extra/book-black.svg")}
+.ui-alt-icon.ui-icon-scanner:after,.ui-alt-icon .ui-icon-scanner:after {background-image: url("images/extra/scanner-black.svg")}
+.ui-alt-icon.ui-icon-stack:after,.ui-alt-icon .ui-icon-stack:after {background-image: url("images/extra/stack-black.svg")}
+.ui-alt-icon.ui-icon-facebook:after,.ui-alt-icon .ui-icon-facebook:after {background-image: url("images/extra/facebook-black.svg")}
+.ui-alt-icon.ui-icon-google-plus:after,.ui-alt-icon .ui-icon-google-plus:after {background-image: url("images/extra/google-plus-black.svg")}
+.ui-alt-icon.ui-icon-twitter:after,.ui-alt-icon .ui-icon-twitter:after {background-image: url("images/extra/twitter-black.svg")}
+
+/* png-black */
+.ui-nosvg .ui-alt-icon.ui-icon-book:after,.ui-nosvg .ui-alt-icon .ui-icon-book:after {background-image: url("images/extra/png/book-black.png")}
+.ui-nosvg .ui-alt-icon.ui-icon-scanner:after,.ui-nosvg .ui-alt-icon .ui-icon-scanner:after {background-image: url("images/extra/png/scanner-black.png")}
+.ui-nosvg .ui-alt-icon.ui-icon-stack:after,.ui-nosvg .ui-alt-icon .ui-icon-stack:after {background-image: url("images/extra/png/stack-black.png")}
+.ui-nosvg .ui-alt-icon.ui-icon-facebook:after,.ui-nosvg .ui-alt-icon .ui-icon-facebook:after {background-image: url("images/extra/png/facebook-black.png")}
+.ui-nosvg .ui-alt-icon.ui-icon-google-plus:after,.ui-nosvg .ui-alt-icon .ui-icon-google-plus:after {background-image: url("images/extra/png/google-plus-black.png")}
+.ui-nosvg .ui-alt-icon.ui-icon-twitter:after,.ui-nosvg .ui-alt-icon .ui-icon-twitter:after {background-image: url("images/extra/png/twitter-black.png")}

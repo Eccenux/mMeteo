@@ -4,7 +4,7 @@ rem
 rem Set path for inkscape
 rem
 rem SET PATH=%PATH%;C:\Programy\Grafika i Media\Inkscape\
-SET PATH=%PATH%;c:\Programy\Media\Inkscape\
+SET PATH=%PATH%;c:\Program Files (x86)\Inkscape\
 
 rem
 rem Run

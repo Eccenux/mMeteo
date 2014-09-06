@@ -1,0 +1,40 @@
+<!--
+	Common footer
+
+	Extra footer attributes supported by MulitFooter library:
+	 * data-footer-pages-include - Space separated list of 
+	   page ids on which this footer is to be copied to.
+	   If not used or empty then all pages will have this footer.
+	 * data-footer-pages-exclude - Space separated list of 
+	   page ids on which this footer should not to be copied to.
+	 * data-parser - JS or PHP (PHP is default)
+	   JS is fully dynamic but can break with new JQM,
+	   PHP is partially static, but less reliant on JQM versions.
+
+	Also extra postions are supported (default is `fixed`):
+	 * `below-header` - "footer" is treated as top menu and inserted in page header (below title).
+	 * `below-content` - footer is not fixed and instead treated as simple navbar. 
+		This might be better e.g. on devices with very small screens, 
+		but moving between long and short pages might look akward.
+-->
+<div data-role="multipagefooter" data-position="fixed" data-id="main-navi">
+	<div data-role="navbar">
+		<ul>
+			<!--
+			<li><a href="index.html" data-icon="back" data-rel="back">
+				<span data-lang="en">Back</span>
+				<span data-lang="pl">Powrót</span>
+			</a></li>
+			-->
+			<li><a href="#page-start" data-icon="home" data-i18n-key="title-application">&nbsp;</a></li>
+			<li><a href="#page-settings" data-icon="gear">
+				<span data-lang="pl">Ustawienia</span>
+				<span data-lang="en">Settings</span>
+			</a></li>
+			<li><a href="#page-about" data-icon="info">
+				<span data-lang="en">Help</span>
+				<span data-lang="pl">Pomoc</span>
+			</a></li>
+		</ul>
+	</div>
+</div><!-- /footer -->

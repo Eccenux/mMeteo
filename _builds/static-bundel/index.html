@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<!--
+	mMeteo - mobile helper app for meteo.pl
+
+	Main views of the application (pages and dialogs).
+	Single view has attribute data-role="page" or data-role="dialog"
+
+	 mMeteo Copyright:  ©2012-2014 Maciej "Nux" Jaros
+	          License:  CC-BY-SA
+	                    http://creativecommons.org/licenses/by-sa/3.0/
+
+	mJappis Copyright:  ©2012-2014 Maciej "Nux" Jaros
+	          License:  CC-BY or MIT
+	            CC-BY:  http://creativecommons.org/licenses/by/3.0/
+	              MIT:  http://www.opensource.org/licenses/mit-license 
+	
+	Libraries Copyright and License in the JS files.
+	
+	See also: #page-about
+-->
+<html manifest="cache.manifest">
+<head>
+	<!-- Note! Main view title is in i18n -->
+	<title>App</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+	<meta charset="UTF-8">
+
+	<meta name="author" content="Maciej Jaros">
+	
+	<!-- app icons -->
+	<link rel="shortcut icon" href="logo/logo.ico">
+	<link rel="apple-touch-icon" href="logo/logo072.png" sizes="72x72">
+	<link rel="apple-touch-icon" href="logo/logo080.png" sizes="80x80">
+	<link rel="apple-touch-icon" href="logo/logo114.png" sizes="114x114">
+	<link rel="apple-touch-icon" href="logo/logo128.png">
+
+	<!-- CSS -->
+	<link href="css/package.css" rel="stylesheet">
+	
+	<!-- jQuery and other libs -->
+	<script src="package.libs.js" type="text/javascript"></script>
+	
+	<!-- this app -->
+	<script src="package.mj.js" type="text/javascript"></script>
+	<script src="package.app.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		mJappisApplication.setup.full();
+	</script>
+	
+	<!-- jQuery mobile (must be here for mobile...options to work) -->
+	<script src="package.jqm.js" type="text/javascript"></script>
+</head>
+<body lang="pl">
+<!--
+	Main page = start page
+-->	
+<div data-role="page" id="page-start">
+
+	<div data-role="header">
+		<h1 data-i18n-key="title-application" style="display:none">&nbsp;</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<form method="GET" target="mMeteoFrame" id="forecastform" action="http://www.meteo.pl/um/php/mgram_search.php" data-action-um="http://www.meteo.pl/um/php/mgram_search.php" data-action-coamps="http://www.meteo.pl/php/mgram_search.php" data-model="um">
+			<fieldset data-role="fieldcontain" data-mini="true">
+				<p><label for="forecastform-lat" data-i18n-key="label-latitude">N</label> <input type="text" id="forecastform-lat" name="NALL"></p>
+				<p><label for="forecastform-lon" data-i18n-key="label-longitude">E</label> <input type="text" id="forecastform-lon" name="EALL"></p>
+			</fieldset>
+			<input type="hidden" name="lang" value="pl">
+			<!--
+			<input type="hidden" name="fdate" id="forecastform-date" value="" />
+			-->
+			<div class="buttons ui-grid-a">
+				<div class="ui-block-a">
+					<input type="submit" data-i18n-key="title-um-model" value="Model UM" id="submitUM" onclick="$('#forecastform').attr('data-model','um')">
+				</div>
+				<div class="ui-block-b">
+					<input type="submit" data-i18n-key="title-coamps-model" value="Model COAMPS" id="submitCOAMPS" onclick="$('#forecastform').attr('data-model','coamps')">
+				</div>
+			</div>
+			<input type="button" data-i18n-key="button-refresh" data-icon="refresh" value="Od&#347;wie&#380; po&#322;o&#380;enie" class="refresh-geo">
+			<input type="button" data-i18n-key="button-show-map" value="Poka&#380; po&#322;o&#380;enie (mapa)" id="show-map-button">
+			<div id="map-preview"></div>
+		</form>
+	</div><!-- /content -->
+
+<div data-role="footer" data-position="fixed" data-id="main-navi" data-position-setup="static">
+	<div data-role="navbar">
+		<ul>
+			<!--
+			<li><a href="index.html" data-icon="back" data-rel="back">
+				<span data-lang="en">Back</span>
+				<span data-lang="pl">Powr&oacute;t</span>
+			</a></li>
+			-->
+			<li><a href="#page-start" data-icon="home" data-i18n-key="title-application">&nbsp;</a></li>
+			<li><a href="#page-settings" data-icon="gear">
+				<span data-lang="pl">Ustawienia</span>
+				<span data-lang="en">Settings</span>
+			</a></li>
+			<li><a href="#page-about" data-icon="info">
+				<span data-lang="en">Help</span>
+				<span data-lang="pl">Pomoc</span>
+			</a></li>
+		</ul>
+	</div>
+</div></div><!-- /page -->
+
+<!--
+	About/help page
+-->	
+<div data-role="page" id="page-about">
+
+	<div data-role="header">
+		<h1>
+			<span data-lang="en">Help</span>
+			<span data-lang="pl">Pomoc</span>
+		</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+	
+		<div data-role="collapsible-set" data-theme="c" data-content-theme="d">
+			<div data-role="collapsible" data-collapsed="false">
+				<h2>
+					<span data-lang="pl">O aplikacji</span>
+					<span data-lang="en">About</span>
+				</h2>
+				<div data-lang="pl">
+					<p>Wersja aplikacji 0.6.1.</p>
+					<p>Copyright &copy; 2012-2014 Maciej "Nux" Jaros.</p>
+					<p>Licencja <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">CC-BY-SA</a></p>
+					<p>Prognozy s&#261; generowane przez serwis <a href="www.meteo.pl" target="_blank">www.meteo.pl</a>, kt&oacute;ry zosta&#322; stworzony przez ICM.</p>
+				</div>
+				<div data-lang="en">
+					<p>App version 0.6.1.</p>
+					<p>Copyright &copy; 2012 Maciej "Nux" Jaros.</p>
+					<p>License <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">CC-BY-SA</a></p>
+					<p>Libraries copyright and license information is avaiable in the JS and CSS files.</p>
+					<p>Prognosis are generate by <a href="www.meteo.pl" target="_blank">www.meteo.pl</a>, which was made by ICM.</p>
+				</div>
+			</div>
+			<div data-role="collapsible" data-collapsed="true">
+				<h2>
+					<span data-lang="pl">Pytania i odpowiedzi</span>
+					<span data-lang="en">FAQ</span>
+				</h2>
+				<div data-role="collapsible-set" data-theme="d" data-content-theme="d">
+					<div data-role="collapsible" data-collapsed="true">
+						<h3>
+							<span data-lang="pl">Po co dwie prognozy?</span>
+							<span data-lang="en">Why use two forecasts?</span>
+						</h3>
+						<div data-lang="pl">
+							<p>Kr&oacute;tkoterminowa prognoza (najbli&#380;sze 2 doby) jest zwykle bardziej dok&#322;adna ni&#380; ta d&#322;uga (4 doby). S&#261; one jednak tak&#380;e nieco inaczej wyliczane (tzw. model UM i COAMPS). Zainteresowanych szczeg&oacute;&#322;ami odsy&#322;am na stron&#281; <a href="www.meteo.pl" target="_blank">www.meteo.pl</a> (s&#261; tam maile kontaktowe do autor&oacute;w).</p>
+							<p>Najwa&#380;niejsze jest to, &#380;e spojrzenie na obie wersje daje wi&#281;ksz&#261; pewno&#347;&#263; co do prognozy. Je&#347;li np. jedna m&oacute;wi, &#380;e jutro b&#281;dzie deszcz, a druga, &#380;e nie b&#281;dzie, to lepiej wzi&#261;&#263; parasol :-).</p>
+						</div>
+						<div data-lang="en">
+							<p>Short-term forecast (next 2 days) is usually more accurate than the long one (4 days). But they are also computed in a different way (so called UM and COAMPS models). More info on <a href="www.meteo.pl" target="_blank">www.meteo.pl</a> (you'll find contact e-mails there).</p>
+							<p>More important, if you look at both forecasts you will be able to gain more confident knowledge of the forecast. For example, if one forecast says it will rain tomorrow and the other one says it won't, then you should take your umbrella anyway :-).</p>
+						</div>
+					</div>
+					<div data-role="collapsible">
+						<h3>
+							<span data-lang="pl">Pogoda z mojej okolicy?</span>
+							<span data-lang="en">Checking neighbourhood forecast?</span>
+						</h3>
+						<div data-lang="pl">
+							<p>Otwieraj&#261;c stron&#281; z prognoz&#261; w lewym rogu zobaczysz tzw. r&oacute;&#380;&#281; wiatr&oacute;w, czy w&#322;a&#347;ciwie strza&#322;ki nawigacyjne. Dzi&#281;ki nim mo&#380;esz porusza&#263; si&#281; po okolicy (strza&#322;ka w prawo leci na wsch&oacute;d, strza&#322;ka do g&oacute;ry na p&oacute;&#322;noc itd.).</p>
+							<p>Prognozy w okolicy mog&#261; te&#380; da&#263; dobry ogl&#261;d na to, jak bardzo zmienna mo&#380;e by&#263; pogoda u Ciebie.</p>
+						</div>
+						<div data-lang="en">
+							<p>After you open a forecast page, you will find a kind of a wind (compass) rose with navigation arrows. By clicking on them you can move around your neighbourhood (right arrow moves you east, up arrow north etc).</p>
+							<p>Neighbourhood forecasts should give you a good overview of how stable the weather will be.</p>
+						</div>
+					</div>
+					<div data-role="collapsible">
+						<h3>
+							<span data-lang="pl">Wykrywanie po&#322;o&#380;enia.</span>
+							<span data-lang="en">Automatic position.</span>
+						</h3>
+						<div data-lang="pl">
+							<p>Po&#322;o&#380;enie (d&#322;ugo&#347;&#263; i szeroko&#347;&#263; geograficzna) jest ustalane przez Twoj&#261; przegl&#261;dark&#281; internetow&#261;. Mo&#380;e ona korzysta&#263; z po&#322;&#261;czenia sieciowego lub GPS. Lepsze wyniki zwykle uzyskuje si&#281; przy w&#322;&#261;czonym po&#322;&#261;czeniu bezprzewodowym (WiFi lub kom&oacute;rkowe) ni&#380; kablowym. Je&#347;li masz tak&#261; mo&#380;liwo&#347;&#263;, w&#322;&#261;cz sie&#263; bezprzewodow&#261; lub GPS.</p>
+							<p>Pami&#281;taj, &#380;e niekt&oacute;re przegl&#261;darki/telefony zapytaj&#261;, czy mo&#380;na udost&#281;pni&#263; po&#322;&#261;czenie tej aplikacji. Je&#347;li nie chcesz (lub nie mo&#380;esz) tego robi&#263;, to mo&#380;esz wpisa&#263; dowolne po&#322;o&#380;enie r&#281;cznie.</p>
+						</div>
+						<div data-lang="en">
+							<p>Position (latitude and longitude) is acquired from your browser. It can use your Internet connection or GPS. Wireless connection (WiFi or mobile) usually gives more accurate results than a cable connection. If you can, turn on your wireless receiver or GPS.</p>
+							<p>Note that some browsers/phones will ask you for permission to share your position with this application. If you don't want (or can't) do that, you can always type in any position manually.</p>
+						</div>
+					</div>
+					<div data-role="collapsible">
+						<h3>
+							<span data-lang="pl">Dlaczego nie dzia&#322;a zapis?</span>
+							<span data-lang="en">Why doesn't my data get saved?</span>
+						</h3>
+						<div data-lang="pl">
+							<p>Je&#347;li nie dzia&#322;a zapis, to najprawdopodobniej Twoja kom&oacute;rka nie obs&#322;uguje skrypt&oacute;w JavaScript lub ma ich obs&#322;ug&#281; wy&#322;&#261;czon&#261;. Program wymaga JavaScript do poprawnego dzia&#322;ania.</p>
+						</div>
+						<div data-lang="en">
+							<p>If saving doesn't work then your cellphone doesn't have JavaScript enabled. This application needs JavaScript to work properly.</p>
+						</div>
+					</div>
+					<!--
+					<div data-role="collapsible">
+						<h3>
+							<span data-lang="pl">Pytanie?</span>
+							<span data-lang="en">Question?</span>
+						</h3>
+						<div data-lang="pl">
+							<p>Odp.</p>
+						</div>
+						<div data-lang="en">
+							<p>Ans.</p>
+						</div>
+					</div>
+					-->
+				</div>
+			</div>
+		</div>
+
+	</div><!-- /content -->
+	
+<div data-role="footer" data-position="fixed" data-id="main-navi" data-position-setup="static">
+	<div data-role="navbar">
+		<ul>
+			<!--
+			<li><a href="index.html" data-icon="back" data-rel="back">
+				<span data-lang="en">Back</span>
+				<span data-lang="pl">Powr&oacute;t</span>
+			</a></li>
+			-->
+			<li><a href="#page-start" data-icon="home" data-i18n-key="title-application">&nbsp;</a></li>
+			<li><a href="#page-settings" data-icon="gear">
+				<span data-lang="pl">Ustawienia</span>
+				<span data-lang="en">Settings</span>
+			</a></li>
+			<li><a href="#page-about" data-icon="info">
+				<span data-lang="en">Help</span>
+				<span data-lang="pl">Pomoc</span>
+			</a></li>
+		</ul>
+	</div>
+</div></div><!-- /page -->
+
+<!--
+	Settings page
+-->	
+<div data-role="page" id="page-settings">
+
+	<div data-role="header">
+		<a href="index.html" data-icon="delete" data-rel="back" data-i18n-key="Cancel"></a>
+		<h1>
+			<span data-lang="en">Settings</span>
+			<span data-lang="pl">Ustawienia</span>
+		</h1>
+		<a href="index.html" data-icon="check" data-theme="b" id="settings-submit-btn" data-i18n-key="Save"></a>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		
+		<form action="index.html" method="GET" data-ajax="false" id="settings-form">
+			<!--
+				@see mJappisApplication.controller.settings
+			-->
+		</form>
+	</div><!-- /content -->
+	
+<div data-role="footer" data-position="fixed" data-id="main-navi" data-position-setup="static">
+	<div data-role="navbar">
+		<ul>
+			<!--
+			<li><a href="index.html" data-icon="back" data-rel="back">
+				<span data-lang="en">Back</span>
+				<span data-lang="pl">Powr&oacute;t</span>
+			</a></li>
+			-->
+			<li><a href="#page-start" data-icon="home" data-i18n-key="title-application">&nbsp;</a></li>
+			<li><a href="#page-settings" data-icon="gear">
+				<span data-lang="pl">Ustawienia</span>
+				<span data-lang="en">Settings</span>
+			</a></li>
+			<li><a href="#page-about" data-icon="info">
+				<span data-lang="en">Help</span>
+				<span data-lang="pl">Pomoc</span>
+			</a></li>
+		</ul>
+	</div>
+</div></div><!-- /page -->
+
+<!--
+	Common footer
+
+	Extra footer attributes supported by MulitFooter library:
+	 * data-footer-pages-include - Space separated list of 
+	   page ids on which this footer is to be copied to.
+	   If not used or empty then all pages will have this footer.
+	 * data-footer-pages-exclude - Space separated list of 
+	   page ids on which this footer should not to be copied to.
+	 * data-parser - JS or PHP (PHP is default)
+	   JS is fully dynamic but can break with new JQM,
+	   PHP is partially static, but less reliant on JQM versions.
+
+	Also extra postions are supported (default is `fixed`):
+	 * `below-header` - "footer" is treated as top menu and inserted in page header (below title).
+	 * `below-content` - footer is not fixed and instead treated as simple navbar. 
+		This might be better e.g. on devices with very small screens, 
+		but moving between long and short pages might look akward.
+-->
+<!-- /footer -->
+
+
+
+</body></html>
